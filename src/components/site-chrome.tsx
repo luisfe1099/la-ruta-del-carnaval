@@ -202,7 +202,7 @@ export function SiteChrome({ whatsappHref }: { whatsappHref: string }) {
 
       <nav
         aria-label={t("mobile")}
-        className="fixed inset-x-0 bottom-0 z-50 bg-cafe pb-[env(safe-area-inset-bottom)] text-kraft md:hidden"
+        className="fixed inset-x-0 bottom-0 z-50 bg-cafe pb-[env(safe-area-inset-bottom)] text-kraft before:pointer-events-none before:absolute before:inset-x-0 before:top-full before:h-40 before:bg-cafe md:hidden md:before:hidden"
       >
         <ul
           className="grid h-[var(--tabbar-h)] items-center gap-1 px-2"
