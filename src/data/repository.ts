@@ -71,13 +71,22 @@ function publicLocation(w: WorkshopLocation, locale: Locale): PublicLocation {
 
 const byNumber = (a: Float, b: Float) => a.number - b.number;
 
+const EMPTY_EDITION: Edition = {
+  id: "empty",
+  year: new Date().getFullYear() + 1,
+  startDate: "",
+  paradeDate: "",
+  active: true,
+};
+
 function index(snapshot: ContentSnapshot) {
   const editions = new Map(snapshot.editions.map((e) => [e.id, e]));
   const creators = new Map(snapshot.creators.map((c) => [c.id, c]));
   const floats = snapshot.floats.filter((f) => f.published);
   const active =
     snapshot.editions.find((e) => e.active) ??
-    [...snapshot.editions].sort((a, b) => b.year - a.year)[0];
+    [...snapshot.editions].sort((a, b) => b.year - a.year)[0] ??
+    EMPTY_EDITION;
   return { editions, creators, floats, active };
 }
 
