@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "siteName": "La Ruta del Carnaval",
+    "description": "Conoce los talleres, las manos y las historias detrás de cada carroza del Carnaval de Negros y Blancos de Pasto.",
+    "titleHome": "La Ruta del Carnaval · Donde nace el carnaval"
+  },
+  "nav": {
+    "home": "Inicio",
+    "floats": "Carrozas",
+    "map": "Mapa",
+    "join": "Ser parte",
+    "more": "Más",
+    "menu": "Menú",
+    "creators": "Creadores",
+    "carnival": "El carnaval",
+    "howTo": "Cómo participar",
+    "contact": "Contacto",
+    "back": "Volver",
+    "language": "Idioma",
+    "close": "Cerrar",
+    "skip": "Saltar al contenido",
+    "primary": "Navegación principal",
+    "mobile": "Navegación móvil"
+  },
+  "common": {
+    "number": "N.º {n}",
+    "open": "Taller abierto",
+    "private": "Taller privado",
+    "all": "Todas",
+    "viewAll": "Ver todas las carrozas",
+    "viewWork": "Ver obra",
+    "madeBy": "Hecha por",
+    "tbd": "Por confirmar"
+  },
+  "whatsapp": {
+    "general": "Hola, quiero ser parte del Carnaval de Negros y Blancos con La Ruta del Carnaval. ¿Me cuentan cómo participar?",
+    "float": "Hola, quiero ser parte de la obra «{name}» (N.º {number}) del Carnaval {year}. ¿Me cuentan cómo participar?",
+    "visit": "Hola, quiero solicitar una visita al taller de la obra «{name}» (N.º {number}). ¿Cuándo sería posible?"
+  },
+  "home": {
+    "tag": "Pasto · Nariño · 6 de enero",
+    "title1": "Donde nace",
+    "title2": "el",
+    "titleEm": "carnaval.",
+    "support": "Conoce los talleres, las manos y las historias detrás de cada carroza del Desfile Magno.",
+    "ctaFloats": "Ver carrozas",
+    "ctaMap": "Ver mapa",
+    "howEyebrow": "Cómo funciona",
+    "howTitle": "Del taller\na la calle.",
+    "steps": {
+      "discover": {
+        "title": "Descubre",
+        "text": "Explora cada obra, su creador y la historia que la inspira."
+      },
+      "write": {
+        "title": "Escríbenos",
+        "text": "Hablamos por WhatsApp y coordinamos con el creador."
+      },
+      "play": {
+        "title": "Sé jugador",
+        "text": "Negociamos tu puesto como jugador y haces parte de la obra el 6 de enero."
+      }
+    },
+    "featuredEyebrow": "Edición {year}",
+    "featuredTitle": "Obras destacadas",
+    "mapEyebrow": "Mapa de talleres",
+    "mapTitle": "Una ruta,\nmuchos talleres.",
+    "legendOpen": "Taller abierto",
+    "legendZone": "Zona aproximada"
+  },
+  "floats": {
+    "eyebrow": "Edición {year} · {count, plural, one {# obra} other {# obras}}",
+    "title": "Carrozas",
+    "filterLabel": "Filtrar carrozas",
+    "empty": "No hay obras con este filtro.",
+    "metaDescription": "Todas las carrozas de la edición {year} del Carnaval de Negros y Blancos de Pasto: creadores, historias y talleres."
+  },
+  "float": {
+    "edition": "N.º {n} · Edición {year}",
+    "story": "La historia",
+    "gallery": "Galería",
+    "rotate": "Gira la maqueta",
+    "rotateHint": "Arrastra para girar",
+    "rotateLabel": "Visor 360° de la maqueta. Usa las flechas para girar.",
+    "model3d": "Modelo 3D",
+    "costume": "Disfraz",
+    "workshop": "Taller",
+    "access": "Acceso",
+    "address": "Dirección",
+    "hours": "Horario de visita",
+    "exhibition": "Exhibición",
+    "privateWorkshopIn": "Taller privado · {zone}",
+    "openWorkshopIn": "{zone} · Pasto",
+    "privateAccess": "Solo con visita coordinada",
+    "directions": "Cómo llegar",
+    "directionsNote": "Abre Google Maps o Waze",
+    "orWaze": "o abrir en Waze",
+    "requestVisit": "Solicitar visita",
+    "requestVisitNote": "Coordinamos la visita contigo por WhatsApp",
+    "cta": "Quiero ser parte de la obra",
+    "watchIntro": "Ver introducción",
+    "closeVideo": "Cerrar video",
+    "previousWorks": "Obras anteriores del creador",
+    "otherEyebrow": "También te puede interesar",
+    "otherTitle": "Otras obras"
+  },
+  "map": {
+    "title": "Mapa de talleres",
+    "eyebrow": "Una ruta, muchos talleres",
+    "description": "Ubica los talleres abiertos y las zonas de los talleres privados.",
+    "legendOpen": "Taller abierto",
+    "legendZone": "Zona aproximada (taller privado)",
+    "go": "Ir",
+    "label": "Mapa interactivo de talleres",
+    "loading": "Cargando mapa…",
+    "approx": "Zona aproximada"
+  },
+  "creators": {
+    "eyebrow": "Las manos detrás de la obra",
+    "title": "Creadores",
+    "intro": "Maestros artesanos y talleres que construyen las carrozas del Desfile Magno.",
+    "workshopMembers": "Taller · {count, plural, one {# integrante} other {# integrantes}}",
+    "individual": "Maestro artesano",
+    "floatCount": "{count, plural, one {# carroza} other {# carrozas}}",
+    "workshopSince": "Taller · desde {year}",
+    "individualSince": "Maestro artesano · desde {year}",
+    "history": "Su historia",
+    "members": "Integrantes",
+    "workshop": "Taller",
+    "access": "Acceso",
+    "accessOpen": "Taller abierto",
+    "accessPrivate": "Solo con visita coordinada",
+    "pastWorks": "Obras anteriores destacadas",
+    "works": "Sus obras",
+    "social": "Redes",
+    "workshopLabel": "Taller"
+  },
+  "howTo": {
+    "title": "Cómo participar",
+    "eyebrow": "Haz parte de la obra",
+    "intro": "Cada carroza tiene su propio equipo de jugadores. Escríbenos y te contamos cómo sumarte a la obra que más te guste.",
+    "cta": "Escribir por WhatsApp",
+    "ctaNote": "Respondemos directamente por WhatsApp. Nosotros coordinamos con el creador."
+  },
+  "carnival": {
+    "title": "El carnaval",
+    "eyebrow": "Carnaval de Negros y Blancos",
+    "intro": "Cada enero, Pasto se transforma. Durante la primera semana del año, la ciudad celebra el Carnaval de Negros y Blancos, declarado Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO.",
+    "blocks": {
+      "days": {
+        "title": "Los días grandes",
+        "text": "El 5 de enero es el Día de los Negros y el 6 de enero el Día de los Blancos, con el Desfile Magno de carrozas como cierre de la fiesta."
+      },
+      "hands": {
+        "title": "Manos de artesano",
+        "text": "Detrás de cada carroza hay meses de trabajo de maestros y talleres que dan forma al cartón, el papel y la pintura."
+      },
+      "route": {
+        "title": "Esta ruta",
+        "text": "La Ruta del Carnaval te acerca a esos talleres y a sus obras, antes de que salgan a la calle."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "eyebrow": "Hablemos",
+    "intro": "La forma más rápida de escribirnos es por WhatsApp. Cuéntanos qué obra te interesa y te respondemos.",
+    "cta": "Escribir por WhatsApp",
+    "city": "Pasto, Nariño · Colombia"
+  },
+  "footer": {
+    "text": "Pasto, Colombia · Patrimonio Cultural Inmaterial de la Humanidad.",
+    "seal": "LA RUTA\nDEL CARNAVAL\n· PASTO ·",
+    "rights": "Contenido de ejemplo. Fotografías sujetas a permisos."
+  },
+  "notFound": {
+    "title": "Esta ruta no existe",
+    "text": "No encontramos la página que buscas.",
+    "cta": "Volver al inicio"
+  }
+}

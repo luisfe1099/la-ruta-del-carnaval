@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "siteName": "La Ruta del Carnaval",
+    "description": "Discover the workshops, the hands and the stories behind every float of Pasto's Carnival of Blacks and Whites.",
+    "titleHome": "La Ruta del Carnaval · Where the carnival is born"
+  },
+  "nav": {
+    "home": "Home",
+    "floats": "Floats",
+    "map": "Map",
+    "join": "Join in",
+    "more": "More",
+    "menu": "Menu",
+    "creators": "Makers",
+    "carnival": "The carnival",
+    "howTo": "How to take part",
+    "contact": "Contact",
+    "back": "Back",
+    "language": "Language",
+    "close": "Close",
+    "skip": "Skip to content",
+    "primary": "Main navigation",
+    "mobile": "Mobile navigation"
+  },
+  "common": {
+    "number": "No. {n}",
+    "open": "Open workshop",
+    "private": "Private workshop",
+    "all": "All",
+    "viewAll": "See all floats",
+    "viewWork": "View piece",
+    "madeBy": "Made by",
+    "tbd": "To be confirmed"
+  },
+  "whatsapp": {
+    "general": "Hi, I'd like to be part of the Carnival of Blacks and Whites with La Ruta del Carnaval. Could you tell me how to take part?",
+    "float": "Hi, I'd like to be part of the piece \"{name}\" (No. {number}) in the {year} Carnival. Could you tell me how to take part?",
+    "visit": "Hi, I'd like to request a visit to the workshop of the piece \"{name}\" (No. {number}). When would it be possible?"
+  },
+  "home": {
+    "tag": "Pasto · Nariño · January 6",
+    "title1": "Where the",
+    "title2": "",
+    "titleEm": "carnival is born.",
+    "support": "Discover the workshops, the hands and the stories behind every float of the Grand Parade.",
+    "ctaFloats": "See floats",
+    "ctaMap": "See map",
+    "howEyebrow": "How it works",
+    "howTitle": "From the workshop\nto the street.",
+    "steps": {
+      "discover": {
+        "title": "Discover",
+        "text": "Explore each piece, its maker and the story that inspires it."
+      },
+      "write": {
+        "title": "Message us",
+        "text": "We talk on WhatsApp and coordinate with the maker."
+      },
+      "play": {
+        "title": "Be a player",
+        "text": "We arrange your spot as a player and you become part of the piece on January 6."
+      }
+    },
+    "featuredEyebrow": "{year} edition",
+    "featuredTitle": "Featured pieces",
+    "mapEyebrow": "Workshop map",
+    "mapTitle": "One route,\nmany workshops.",
+    "legendOpen": "Open workshop",
+    "legendZone": "Approximate area"
+  },
+  "floats": {
+    "eyebrow": "{year} edition · {count, plural, one {# piece} other {# pieces}}",
+    "title": "Floats",
+    "filterLabel": "Filter floats",
+    "empty": "No pieces match this filter.",
+    "metaDescription": "Every float of the {year} Carnival of Blacks and Whites in Pasto: makers, stories and workshops."
+  },
+  "float": {
+    "edition": "No. {n} · {year} edition",
+    "story": "The story",
+    "gallery": "Gallery",
+    "rotate": "Turn the scale model",
+    "rotateHint": "Drag to rotate",
+    "rotateLabel": "360° scale model viewer. Use the arrow keys to rotate.",
+    "model3d": "3D model",
+    "costume": "Costume",
+    "workshop": "Workshop",
+    "access": "Access",
+    "address": "Address",
+    "hours": "Visiting hours",
+    "exhibition": "On view",
+    "privateWorkshopIn": "Private workshop · {zone}",
+    "openWorkshopIn": "{zone} · Pasto",
+    "privateAccess": "By arranged visit only",
+    "directions": "Get directions",
+    "directionsNote": "Opens Google Maps or Waze",
+    "orWaze": "or open in Waze",
+    "requestVisit": "Request a visit",
+    "requestVisitNote": "We arrange the visit with you on WhatsApp",
+    "cta": "I want to be part of the piece",
+    "watchIntro": "Watch intro",
+    "closeVideo": "Close video",
+    "previousWorks": "Previous works by this maker",
+    "otherEyebrow": "You might also like",
+    "otherTitle": "Other pieces"
+  },
+  "map": {
+    "title": "Workshop map",
+    "eyebrow": "One route, many workshops",
+    "description": "Find the open workshops and the areas of the private ones.",
+    "legendOpen": "Open workshop",
+    "legendZone": "Approximate area (private workshop)",
+    "go": "Go",
+    "label": "Interactive workshop map",
+    "loading": "Loading map…",
+    "approx": "Approximate area"
+  },
+  "creators": {
+    "eyebrow": "The hands behind the work",
+    "title": "Makers",
+    "intro": "Master artisans and workshops that build the floats of the Grand Parade.",
+    "workshopMembers": "Workshop · {count, plural, one {# member} other {# members}}",
+    "individual": "Master artisan",
+    "floatCount": "{count, plural, one {# float} other {# floats}}",
+    "workshopSince": "Workshop · since {year}",
+    "individualSince": "Master artisan · since {year}",
+    "history": "Their story",
+    "members": "Members",
+    "workshop": "Workshop",
+    "access": "Access",
+    "accessOpen": "Open workshop",
+    "accessPrivate": "By arranged visit only",
+    "pastWorks": "Featured previous works",
+    "works": "Their pieces",
+    "social": "Social",
+    "workshopLabel": "Workshop"
+  },
+  "howTo": {
+    "title": "How to take part",
+    "eyebrow": "Be part of the piece",
+    "intro": "Every float has its own team of players. Message us and we'll tell you how to join the piece you like most.",
+    "cta": "Message on WhatsApp",
+    "ctaNote": "We reply directly on WhatsApp. We coordinate with the maker."
+  },
+  "carnival": {
+    "title": "The carnival",
+    "eyebrow": "Carnival of Blacks and Whites",
+    "intro": "Every January, Pasto transforms. During the first week of the year the city celebrates the Carnival of Blacks and Whites, recognised by UNESCO as Intangible Cultural Heritage of Humanity.",
+    "blocks": {
+      "days": {
+        "title": "The big days",
+        "text": "January 5 is the Day of the Blacks and January 6 the Day of the Whites, with the Grand Parade of floats closing the celebration."
+      },
+      "hands": {
+        "title": "Artisan hands",
+        "text": "Behind every float are months of work by masters and workshops shaping cardboard, paper and paint."
+      },
+      "route": {
+        "title": "This route",
+        "text": "La Ruta del Carnaval brings you closer to those workshops and their pieces, before they hit the street."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "eyebrow": "Let's talk",
+    "intro": "The fastest way to reach us is WhatsApp. Tell us which piece interests you and we'll reply.",
+    "cta": "Message on WhatsApp",
+    "city": "Pasto, Nariño · Colombia"
+  },
+  "footer": {
+    "text": "Pasto, Colombia · Intangible Cultural Heritage of Humanity.",
+    "seal": "LA RUTA\nDEL CARNAVAL\n· PASTO ·",
+    "rights": "Sample content. Photographs subject to permissions."
+  },
+  "notFound": {
+    "title": "This route doesn't exist",
+    "text": "We couldn't find the page you're looking for.",
+    "cta": "Back home"
+  }
+}
