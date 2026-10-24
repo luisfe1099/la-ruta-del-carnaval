@@ -59,7 +59,7 @@ export default async function FloatPage({ params }: PageProps<"/[locale]/carroza
       <div className="mx-auto flex max-w-6xl flex-col lg:grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-start lg:gap-x-14 lg:px-8 lg:pt-10">
         {/* Columna izquierda en escritorio: media */}
         <div className="contents lg:flex lg:flex-col lg:gap-10">
-          <div className="relative order-1 h-[380px] overflow-hidden md:h-[480px] lg:h-[560px]">
+          <div className="relative order-1 h-[380px] overflow-hidden md:h-[480px] lg:h-[560px] lg:rounded-lg">
             <Media image={float.image} priority sizes="(min-width: 1024px) 700px, 100vw" />
             <div className="absolute inset-0 bg-gradient-to-b from-cafe/25 via-transparent via-40% to-cafe/60" />
             {float.videoUrl && <VideoModal url={float.videoUrl} className="absolute bottom-[18px] right-[18px] z-[2]" />}
@@ -93,7 +93,7 @@ export default async function FloatPage({ params }: PageProps<"/[locale]/carroza
                 {float.pastWorks.map((w) => (
                   <li key={w.slug}>
                     <Link href={`/carrozas/${w.slug}`} className="group block">
-                      <div className="relative h-[110px] overflow-hidden md:h-[160px]">
+                      <div className="relative h-[110px] overflow-hidden rounded-lg md:h-[160px]">
                         <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
                           <Media image={w.image} sizes="(min-width: 1024px) 300px, 50vw" />
                         </div>

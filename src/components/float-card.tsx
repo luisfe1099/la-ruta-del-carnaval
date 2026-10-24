@@ -33,7 +33,7 @@ export function FloatCard({
 }) {
   const t = useTranslations("common");
   return (
-    <article className={`group relative flex flex-col ${tone === "kraft" ? "bg-kraft" : "bg-carton"}`}>
+    <article className={`group relative flex flex-col overflow-hidden rounded-lg ${tone === "kraft" ? "bg-kraft" : "bg-carton"}`}>
       <Link href={`/carrozas/${float.slug}`} className="block">
         <div className={`relative overflow-hidden ${imageHeight} md:h-[260px]`}>
           <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">

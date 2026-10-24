@@ -122,7 +122,7 @@ export default async function CreatorPage({ params }: PageProps<"/[locale]/cread
             {c.pastWorks.map((w) => (
               <li key={w.slug}>
                 <Link href={`/carrozas/${w.slug}`} className="group block">
-                  <div className="relative h-[140px] overflow-hidden md:h-[220px]">
+                  <div className="relative h-[140px] overflow-hidden rounded-lg md:h-[220px]">
                     <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
                       <Media image={w.image} sizes="(min-width: 768px) 320px, 50vw" />
                     </div>

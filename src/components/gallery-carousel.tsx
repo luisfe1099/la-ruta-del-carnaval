@@ -50,7 +50,7 @@ export function GalleryCarousel({ images }: { images: PublicImage[] }) {
               type="button"
               onClick={() => openZoom(i)}
               aria-label={`${t("expand")} ${i + 1}/${total}`}
-              className="relative block h-[300px] w-full cursor-zoom-in overflow-hidden md:h-[380px]"
+              className="relative block h-[300px] w-full cursor-zoom-in overflow-hidden rounded-lg md:h-[380px]"
             >
               <Media image={g} sizes="(min-width: 1024px) 480px, 80vw" />
             </button>
@@ -89,7 +89,7 @@ export function GalleryCarousel({ images }: { images: PublicImage[] }) {
             {t("closeGallery").toUpperCase()} ✕
           </button>
         </div>
-        <div className="relative mx-auto h-[calc(100dvh-110px)] w-full max-w-5xl">
+        <div className="relative mx-auto h-[calc(100dvh-110px)] w-full max-w-5xl overflow-hidden rounded-lg">
           <Media key={zoom} image={images[zoom]} sizes="100vw" className="!object-contain" />
         </div>
         {total > 1 && (
