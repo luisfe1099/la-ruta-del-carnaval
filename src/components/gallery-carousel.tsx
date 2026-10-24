@@ -13,6 +13,7 @@ export function GalleryCarousel({ images }: { images: PublicImage[] }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [current, setCurrent] = useState(0);
   const [zoom, setZoom] = useState(0);
+  const [open, setOpen] = useState(false);
   const total = images.length;
 
   const onScroll = () => {
@@ -32,6 +33,7 @@ export function GalleryCarousel({ images }: { images: PublicImage[] }) {
 
   const openZoom = (i: number) => {
     setZoom(i);
+    setOpen(true);
     dialog.current?.showModal();
   };
   const step = (dir: number) => setZoom((z) => (z + dir + total) % total);
@@ -74,6 +76,7 @@ export function GalleryCarousel({ images }: { images: PublicImage[] }) {
       <dialog
         ref={dialog}
         aria-label={t("gallery")}
+        onClose={() => setOpen(false)}
         onClick={(e) => e.target === dialog.current && dialog.current?.close()}
         onKeyDown={(e) => {
           if (e.key === "ArrowRight") step(1);
@@ -90,7 +93,9 @@ export function GalleryCarousel({ images }: { images: PublicImage[] }) {
           </button>
         </div>
         <div className="relative mx-auto h-[calc(100dvh-110px)] w-full max-w-5xl overflow-hidden rounded-lg">
-          <Media key={zoom} image={images[zoom]} sizes="100vw" className="!object-contain" />
+          {open && (
+            <Media key={zoom} image={images[zoom]} sizes="(min-width: 1024px) 1024px, 100vw" className="!object-contain" />
+          )}
         </div>
         {total > 1 && (
           <div className="flex justify-center gap-10 py-3 font-mono text-lg">
