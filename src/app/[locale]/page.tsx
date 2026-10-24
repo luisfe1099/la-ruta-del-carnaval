@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { FloatCard } from "@/components/float-card";
 import { HeroItem, Reveal } from "@/components/motion";
@@ -8,6 +11,9 @@ import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 
 export const revalidate = 300;
+
+const HERO_FILE = "hero.jpg";
+const hasHeroPhoto = () => existsSync(path.join(process.cwd(), "public", "images", HERO_FILE));
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -60,18 +66,29 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     getFloatCards(locale as Locale, { featuredOnly: true }),
   ]);
 
+  const heroPhoto = hasHeroPhoto();
   const steps = ["discover", "write", "play"] as const;
 
   return (
     <>
       <section
-        className="relative flex min-h-[560px] flex-col justify-end text-kraft md:min-h-[640px]"
-        style={{
-          background:
-            "linear-gradient(180deg,rgba(43,29,20,.35) 0%,rgba(43,29,20,.1) 35%,rgba(43,29,20,.88) 100%),radial-gradient(circle at 70% 30%,#C98B2B 0,transparent 40%),radial-gradient(circle at 25% 60%,#A8553A 0,transparent 45%),#5a3a26",
-        }}
+        className="relative flex min-h-[560px] flex-col justify-end overflow-hidden text-kraft md:min-h-[640px]"
+        style={
+          heroPhoto
+            ? { backgroundColor: "#2B1D14" }
+            : {
+                background:
+                  "linear-gradient(180deg,rgba(43,29,20,.35) 0%,rgba(43,29,20,.1) 35%,rgba(43,29,20,.88) 100%),radial-gradient(circle at 70% 30%,#C98B2B 0,transparent 40%),radial-gradient(circle at 25% 60%,#A8553A 0,transparent 45%),#5a3a26",
+              }
+        }
       >
-        <Container className="pb-7 pt-28 md:pb-16">
+        {heroPhoto && (
+          <>
+            <Image src={`/images/${HERO_FILE}`} alt="" fill priority sizes="100vw" className="object-cover" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(43,29,20,.45)_0%,rgba(43,29,20,.15)_35%,rgba(43,29,20,.88)_100%)]" />
+          </>
+        )}
+        <Container className="relative pb-7 pt-28 md:pb-16">
           <HeroItem>
             <p className="mb-3.5 font-mono text-[11px] uppercase tracking-[0.14em] opacity-85">{t("tag")}</p>
           </HeroItem>

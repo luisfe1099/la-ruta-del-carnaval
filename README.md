@@ -47,6 +47,10 @@ Los componentes no cambian: la fuente se elige con `CONTENT_SOURCE` (ver `src/da
 
 "Reservado" = taller **privado**; la obra se muestra igual. La ubicación exacta de un taller privado se descarta en `repository.ts` (y la consulta GROQ ni siquiera la pide), y los tipos públicos no tienen campo para ella. Por eso el dataset de Sanity debe ser privado: en uno público esa coordenada sería consultable por la API.
 
+## Foto de portada
+
+Pon tu foto en `public/images/hero.jpg` (horizontal, mín. 1600 px de ancho) y haz push. Sin ese archivo se muestra el degradado de tierra. Se le superpone un velo oscuro para que el texto se lea.
+
 ## Contenido real pendiente
 
 - Reemplazar placeholders por fotos reales (campo `src` de cada imagen / imágenes en Sanity).
