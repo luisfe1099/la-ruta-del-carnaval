@@ -21,8 +21,8 @@ const QUERY = /* groq */ `{
     "editionId": edition._ref,
     "creatorId": creator._ref,
     "mainImage": mainImage${photo},
-    "gallery": gallery[]${photo},
-    "maquetteFrames": maquetteFrames[]${photo},
+    "gallery": gallery[defined(asset)]${photo},
+    "maquetteFrames": maquetteFrames[defined(asset)]${photo},
     "model3D": select(defined(model3D.glb.asset) => { "glbUrl": model3D.glb.asset->url, "posterUrl": model3D.poster.asset->url }),
     "workshop": workshop{
       access, publicZone, visitHours, exhibitionNote,
