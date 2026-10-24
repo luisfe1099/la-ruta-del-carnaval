@@ -47,14 +47,14 @@ export function GalleryCarousel({ images }: { images: PublicImage[] }) {
         aria-label={t("gallery")}
       >
         {images.map((g, i) => (
-          <li key={i} className="w-[80%] shrink-0 snap-start md:w-[60%] lg:w-[70%]">
+          <li key={i} className="w-[46%] shrink-0 snap-start md:w-[32%] lg:w-[34%]">
             <button
               type="button"
               onClick={() => openZoom(i)}
               aria-label={`${t("expand")} ${i + 1}/${total}`}
-              className="relative block h-[300px] w-full cursor-zoom-in overflow-hidden rounded-lg md:h-[380px]"
+              className="relative block h-[170px] w-full cursor-zoom-in overflow-hidden rounded-lg md:h-[200px]"
             >
-              <Media image={g} sizes="(min-width: 1024px) 480px, 80vw" />
+              <Media image={g} sizes="(min-width: 1024px) 240px, (min-width: 768px) 32vw, 46vw" />
             </button>
           </li>
         ))}
