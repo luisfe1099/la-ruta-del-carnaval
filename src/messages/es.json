@@ -8,7 +8,6 @@
     "home": "Inicio",
     "floats": "Carrozas",
     "map": "Mapa",
-    "join": "Ser parte",
     "more": "Más",
     "menu": "Menú",
     "creators": "Creadores",
@@ -34,7 +33,7 @@
   },
   "whatsapp": {
     "general": "Hola, quiero ser parte del Carnaval de Negros y Blancos con La Ruta del Carnaval. ¿Me cuentan cómo participar?",
-    "float": "Hola, quiero ser parte de la obra «{name}» (N.º {number}) del Carnaval {year}. ¿Me cuentan cómo participar?",
+    "float": "Hola, quiero un cupo en la obra «{name}» (N.º {number}) del Carnaval {year}. ¿Me cuentan cómo participar?",
     "visit": "Hola, quiero solicitar una visita al taller de la obra «{name}» (N.º {number}). ¿Cuándo sería posible?"
   },
   "home": {
@@ -97,7 +96,7 @@
     "orWaze": "o abrir en Waze",
     "requestVisit": "Solicitar visita",
     "requestVisitNote": "Coordinamos la visita contigo por WhatsApp",
-    "cta": "Quiero ser parte de la obra",
+    "cta": "Quiero un cupo",
     "watchIntro": "Ver introducción",
     "closeVideo": "Cerrar video",
     "previousWorks": "Obras anteriores del creador",

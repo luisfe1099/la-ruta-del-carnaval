@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-import { ExternalButton, Logo } from "./ui";
+import { Logo } from "./ui";
 
 type Section = "home" | "detail" | "list";
 
@@ -79,7 +79,7 @@ const Icons = {
   ),
 };
 
-export function SiteChrome({ whatsappHref }: { whatsappHref: string }) {
+export function SiteChrome() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const section = sectionOf(pathname);
@@ -118,18 +118,11 @@ export function SiteChrome({ whatsappHref }: { whatsappHref: string }) {
     { href: "/contacto", label: t("contact") },
   ];
 
-  const tabs =
-    section === "detail"
-      ? [
-          { href: "/carrozas", label: t("floats"), icon: Icons.floats },
-          { href: "/mapa", label: t("map"), icon: Icons.map },
-          { href: "/creadores", label: t("creators"), icon: Icons.creators },
-        ]
-      : [
-          { href: "/carrozas", label: t("floats"), icon: Icons.floats },
-          { href: "/mapa", label: t("map"), icon: Icons.map },
-        ];
-  const showJoin = section !== "detail";
+  const tabs = [
+    { href: "/carrozas", label: t("floats"), icon: Icons.floats },
+    { href: "/mapa", label: t("map"), icon: Icons.map },
+    { href: "/creadores", label: t("creators"), icon: Icons.creators },
+  ];
 
   const tabClass = (active: boolean) =>
     `flex h-full flex-col items-center justify-center gap-1 font-mono text-[10px] uppercase tracking-[0.1em] transition-opacity ${
@@ -193,9 +186,6 @@ export function SiteChrome({ whatsappHref }: { whatsappHref: string }) {
               </Link>
             ))}
             <LangSwitch />
-            <ExternalButton href={whatsappHref} size="sm">
-              {t("join")}
-            </ExternalButton>
           </nav>
         </div>
       </header>
@@ -205,10 +195,7 @@ export function SiteChrome({ whatsappHref }: { whatsappHref: string }) {
         className="fixed inset-x-3 bottom-[calc(var(--tabbar-gap)+env(safe-area-inset-bottom))] z-50 rounded-2xl bg-cafe text-kraft shadow-[0_8px_28px_rgba(43,29,20,0.35)] md:hidden"
       >
         <ul
-          className="grid h-[var(--tabbar-h)] items-center gap-1 px-2"
-          style={{
-            gridTemplateColumns: showJoin ? "1fr 1fr 1.3fr 0.7fr" : "1fr 1fr 1fr 1fr",
-          }}
+          className="grid h-[var(--tabbar-h)] grid-cols-4 items-center gap-1 px-2"
         >
           {tabs.map((tab) => (
             <li key={tab.href} className="h-full">
@@ -222,16 +209,6 @@ export function SiteChrome({ whatsappHref }: { whatsappHref: string }) {
               </Link>
             </li>
           ))}
-          {showJoin && (
-            <li>
-              <ExternalButton
-                href={whatsappHref}
-                className="h-11 w-full !text-[11px] !font-medium uppercase tracking-[0.1em] !py-0"
-              >
-                {t("join")}
-              </ExternalButton>
-            </li>
-          )}
           <li className="h-full">
             <button
               type="button"

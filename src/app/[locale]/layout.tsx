@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import { SiteChrome } from "@/components/site-chrome";
 import { SwRegister } from "@/components/sw-register";
 import { isLocale, routing } from "@/i18n/routing";
-import { SITE_NAME, SITE_URL, whatsappLink } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const fraunces = Fraunces({
@@ -62,7 +62,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
 
-  const t = await getTranslations({ locale, namespace: "whatsapp" });
   const nav = await getTranslations({ locale, namespace: "nav" });
 
   return (
@@ -75,7 +74,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           >
             {nav("skip")}
           </a>
-          <SiteChrome whatsappHref={whatsappLink(t("general"))} />
+          <SiteChrome />
           <div className="pb-tabbar">
             <main id="contenido">{children}</main>
             <Footer />

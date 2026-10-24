@@ -8,7 +8,6 @@
     "home": "Home",
     "floats": "Floats",
     "map": "Map",
-    "join": "Join in",
     "more": "More",
     "menu": "Menu",
     "creators": "Makers",
@@ -34,7 +33,7 @@
   },
   "whatsapp": {
     "general": "Hi, I'd like to be part of the Carnival of Blacks and Whites with La Ruta del Carnaval. Could you tell me how to take part?",
-    "float": "Hi, I'd like to be part of the piece \"{name}\" (No. {number}) in the {year} Carnival. Could you tell me how to take part?",
+    "float": "Hi, I'd like a spot on the piece \"{name}\" (No. {number}) in the {year} Carnival. Could you tell me how to take part?",
     "visit": "Hi, I'd like to request a visit to the workshop of the piece \"{name}\" (No. {number}). When would it be possible?"
   },
   "home": {
@@ -97,7 +96,7 @@
     "orWaze": "or open in Waze",
     "requestVisit": "Request a visit",
     "requestVisitNote": "We arrange the visit with you on WhatsApp",
-    "cta": "I want to be part of the piece",
+    "cta": "I want a spot",
     "watchIntro": "Watch intro",
     "closeVideo": "Close video",
     "previousWorks": "Previous works by this maker",
