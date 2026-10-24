@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Ruta del Carnaval · Maqueta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kraft:#F3EBDD; --carton:#E4D3B8; --cafe:#2B1D14; --arcilla:#A8553A;
+  --ocre:#C98B2B; --bermellon:#C8341E;
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9cdb8;font-family:var(--sans);color:var(--cafe);padding:40px 16px;}
+h1.board{font-family:var(--serif);font-weight:400;text-align:center;font-size:22px;margin-bottom:6px}
+p.sub{text-align:center;font-family:var(--mono);font-size:12px;opacity:.6;margin-bottom:36px}
+.stage{display:flex;flex-wrap:wrap;gap:40px;justify-content:center;align-items:flex-start}
+.label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;text-align:center;margin-bottom:12px;opacity:.7}
+
+.phone{width:390px;height:800px;border-radius:44px;background:#111;padding:10px;box-shadow:0 30px 60px -20px rgba(43,29,20,.5)}
+.screen{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:var(--kraft)}
+.scroll{height:100%;overflow-y:auto;padding-bottom:90px;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:multiply;z-index:5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+.top{position:absolute;top:0;left:0;right:0;z-index:4;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;color:var(--kraft)}
+.logo{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:-.01em}
+.logo i{color:var(--bermellon);font-style:normal}
+.menu{font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+
+.hero{height:560px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:28px 22px;color:var(--kraft);
+  background:
+   linear-gradient(180deg,rgba(43,29,20,.35) 0%,rgba(43,29,20,.1) 35%,rgba(43,29,20,.88) 100%),
+   radial-gradient(circle at 70% 30%,#C98B2B 0,transparent 40%),
+   radial-gradient(circle at 25% 60%,#A8553A 0,transparent 45%),
+   #5a3a26}
+.hero .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;opacity:.85}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1.02;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--carton)}
+.hero p{margin-top:14px;font-size:15px;line-height:1.5;opacity:.9;max-width:300px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:2px;padding:14px 20px;font-size:14px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-family:var(--sans)}
+.btn.primary{background:var(--bermellon);color:#fff}
+.btn.ghost{background:transparent;color:inherit;border:1px solid currentColor}
+.hero .btns{display:flex;gap:10px;margin-top:22px}
+
+section{padding:44px 22px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--arcilla);margin-bottom:10px}
+h2{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1;letter-spacing:-.015em}
+
+.steps{margin-top:24px;display:grid;gap:0}
+.step{display:flex;gap:16px;padding:18px 0;border-top:1px solid rgba(43,29,20,.18)}
+.step b{font-family:var(--mono);font-weight:500;color:var(--bermellon);font-size:13px;padding-top:3px}
+.step h3{font-family:var(--serif);font-weight:600;font-size:18px;margin-bottom:4px}
+.step p{font-size:14px;line-height:1.5;opacity:.75}
+
+.cards{display:grid;gap:22px;margin-top:24px}
+.card{position:relative}
+.card .img{height:230px;position:relative;overflow:hidden}
+.card .meta{padding:14px 16px 18px}
+.card .no{font-family:var(--mono);font-size:11px;letter-spacing:.1em;opacity:.65}
+.card h3{font-family:var(--serif);font-weight:600;font-size:22px;margin:4px 0 2px;letter-spacing:-.01em}
+.card .by{font-size:13px;opacity:.75}
+.chip{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;background:var(--kraft);color:var(--cafe);z-index:2}
+.chip.res{background:var(--cafe);color:var(--kraft)}
+.p1{background:radial-gradient(circle at 30% 30%,#C98B2B,transparent 50%),radial-gradient(circle at 75% 70%,#A8553A,transparent 55%),#6b4430}
+.p2{background:radial-gradient(circle at 70% 30%,#C8341E,transparent 45%),radial-gradient(circle at 20% 80%,#C98B2B,transparent 50%),#3b2a1e}
+.p3{background:linear-gradient(135deg,#2B1D14,#4a3324);}
+.veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);background:rgba(43,29,20,.35);color:var(--kraft);font-family:var(--serif);font-style:italic;font-size:17px;text-align:center;padding:20px}
+
+.map{margin-top:22px;height:220px;background:
+  repeating-linear-gradient(0deg,transparent 0 31px,rgba(43,29,20,.08) 31px 32px),
+  repeating-linear-gradient(90deg,transparent 0 31px,rgba(43,29,20,.08) 31px 32px),var(--carton);position:relative;overflow:hidden}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;width:14px;height:14px;background:var(--bermellon);border:2px solid var(--kraft);border-radius:50%}
+.zone{position:absolute;width:56px;height:56px;border-radius:50%;border:1.5px dashed var(--cafe);background:rgba(43,29,20,.08)}
+.legend{display:flex;gap:16px;margin-top:10px;font-family:var(--mono);font-size:10px;opacity:.7}
+
+footer{background:var(--cafe);color:var(--kraft);padding:34px 22px 40px}
+footer .logo{font-size:20px}
+footer p{font-size:13px;opacity:.65;margin-top:8px}
+.seal{width:72px;height:72px;border:1px solid var(--carton);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-align:center;margin-top:18px;opacity:.8;line-height:1.5}
+
+.tabbar{position:absolute;bottom:0;left:0;right:0;z-index:6;display:grid;grid-template-columns:1fr 1fr 1.3fr 0.7fr;gap:4px;align-items:center;background:var(--cafe);color:var(--kraft);height:68px;padding:0 8px}
+.tab{text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.tab svg{display:block;margin:0 auto 4px}
+.tab.cupo{background:var(--bermellon);color:#fff;opacity:1;height:44px;display:flex;align-items:center;justify-content:center;border-radius:2px;font-weight:500;font-size:11px}
+
+.fh{height:380px;position:relative;background:
+  linear-gradient(180deg,rgba(43,29,20,.25),rgba(43,29,20,0) 40%,rgba(43,29,20,.6)),
+  radial-gradient(circle at 65% 35%,#C8341E,transparent 40%),radial-gradient(circle at 25% 70%,#C98B2B,transparent 50%),#4a2f20}
+.play{position:absolute;right:18px;bottom:18px;display:flex;align-items:center;gap:8px;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+.play i{width:40px;height:40px;border-radius:50%;border:1px solid #fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px}
+.ft{padding:26px 22px 0}
+.ft .no{font-family:var(--mono);font-size:12px;color:var(--arcilla);letter-spacing:.1em}
+.ft h1{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1.05;letter-spacing:-.02em;margin:6px 0 16px}
+.maker{display:flex;align-items:center;gap:12px;padding:14px 0;border-top:1px solid rgba(43,29,20,.18);border-bottom:1px solid rgba(43,29,20,.18)}
+.avatar{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#C98B2B,#6b4430)}
+.maker small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.maker b{font-family:var(--serif);font-weight:600;font-size:17px}
+.story{padding:26px 22px 0}
+.story p{font-family:var(--serif);font-size:17px;line-height:1.6}
+.story p::first-letter{font-size:52px;float:left;line-height:.9;padding:4px 8px 0 0;color:var(--bermellon)}
+.gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:120px 120px;gap:6px;padding:26px 22px 0}
+.gallery div:first-child{grid-row:span 2}
+.info{margin:26px 22px 0;padding:18px;background:var(--carton)}
+.info dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:12px}
+.info dt:first-child{margin-top:0}
+.info dd{font-size:14px;margin-top:3px}
+.info .btn{margin-top:16px;width:100%;justify-content:center;color:var(--cafe)}
+.sticky{position:absolute;bottom:68px;left:0;right:0;z-index:6;padding:10px 14px;background:linear-gradient(180deg,transparent,var(--kraft) 40%)}
+.sticky .btn{width:100%;justify-content:center;padding:16px;font-size:15px}
+.note{font-family:var(--mono);font-size:11px;opacity:.65;margin-top:10px}
+</style>
+</head>
+<body>
+<h1 class="board">La Ruta del Carnaval · Maqueta visual v0.1</h1>
+<p class="sub">Contenido de ejemplo · Fotos y textos ilustrativos · Desplaza dentro de cada teléfono</p>
+
+<div class="stage">
+
+<div>
+  <div class="label">01 · Inicio</div>
+  <div class="phone"><div class="screen">
+    <div class="grain"></div>
+    <div class="top"><span class="logo">La Ruta del Carnaval<i>.</i></span><span class="menu">MENÚ</span></div>
+    <div class="scroll">
+      <div class="hero">
+        <div class="tag">Pasto · Nariño · 6 de enero</div>
+        <h1>Donde nace<br>el <em>carnaval.</em></h1>
+        <p>Conoce los talleres, las manos y las historias detrás de cada carroza del Desfile Magno.</p>
+        <div class="btns">
+          <a class="btn primary">Ver carrozas</a>
+          <a class="btn ghost">Ver mapa</a>
+        </div>
+      </div>
+
+      <section>
+        <div class="eyebrow">Cómo funciona</div>
+        <h2>Del taller<br>a la calle.</h2>
+        <div class="steps">
+          <div class="step"><b>01</b><div><h3>Descubre</h3><p>Explora cada obra, su creador y la historia que la inspira.</p></div></div>
+          <div class="step"><b>02</b><div><h3>Escríbenos</h3><p>Hablamos por WhatsApp y coordinamos con el creador.</p></div></div>
+          <div class="step"><b>03</b><div><h3>Sé jugador</h3><p>Negociamos tu puesto como jugador y haces parte de la obra el 6 de enero.</p></div></div>
+        </div>
+      </section>
+
+      <section style="background:var(--carton)">
+        <div class="eyebrow">Edición 2027</div>
+        <h2>Obras destacadas</h2>
+        <div class="cards">
+          <div class="card" style="background:var(--kraft)">
+            <div class="img p1"><span class="chip">Público</span></div>
+            <div class="meta"><div class="no">N.º 07</div><h3>Raíces del Galeras</h3><div class="by">Taller Hermanos Chachinoy</div></div>
+          </div>
+          <div class="card" style="background:var(--kraft)">
+            <div class="img p2"><span class="chip res">Taller privado</span></div>
+            <div class="meta"><div class="no">N.º 12</div><h3>El Sueño del Cóndor</h3><div class="by">Maestro Alirio Benavides</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="eyebrow">Mapa de talleres</div>
+        <h2>Una ruta,<br>muchos talleres.</h2>
+        <div class="map">
+          <svg viewBox="0 0 346 220" preserveAspectRatio="none"><path d="M10 190 C80 140 110 190 170 120 S280 90 336 30" stroke="#A8553A" stroke-width="2" fill="none" stroke-dasharray="5 5"/></svg>
+          <span class="pin" style="left:52px;top:150px"></span>
+          <span class="pin" style="left:168px;top:116px"></span>
+          <span class="pin" style="left:262px;top:84px"></span>
+          <span class="zone" style="left:215px;top:130px"></span>
+          <span class="zone" style="left:92px;top:60px"></span>
+        </div>
+        <div class="legend"><span>● Taller público</span><span>◌ Zona aproximada</span></div>
+      </section>
+
+      <footer>
+        <span class="logo">La Ruta del Carnaval<i>.</i></span>
+        <p>Pasto, Colombia · Patrimonio Cultural Inmaterial de la Humanidad.</p>
+        <div class="seal">LA RUTA<br>DEL CARNAVAL<br>· PASTO ·</div>
+      </footer>
+    </div>
+
+    <nav class="tabbar">
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12"/><path d="M2 11l4-4 4 4 3-3 3 3"/></svg>Carrozas</div>
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 16s5-4.5 5-8.5a5 5 0 10-10 0C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.6"/></svg>Mapa</div>
+      <div class="tab cupo">Ser parte</div>
+      <div class="tab">Más</div>
+    </nav>
+  </div></div>
+</div>
+
+<div>
+  <div class="label">02 · Ficha de carroza (pública)</div>
+  <div class="phone"><div class="screen">
+    <div class="grain"></div>
+    <div class="top"><span class="menu">← VOLVER</span><span class="logo">La Ruta<i>.</i></span><span class="menu">ES · EN</span></div>
+    <div class="scroll">
+      <div class="fh"><div class="play"><i>▶</i>VER INTRODUCCIÓN</div></div>
+      <div class="ft">
+        <div class="no">N.º 07 · EDICIÓN 2027</div>
+        <h1>Raíces del Galeras</h1>
+        <div class="maker"><div class="avatar"></div><div><small>Hecha por</small><b>Taller Hermanos Chachinoy</b></div></div>
+      </div>
+
+      <div class="story">
+        <div class="eyebrow" style="margin-bottom:12px">La historia</div>
+        <p>Una carroza que nace del volcán y de la gente que lo habita. Cada capa de cartón y papel recuerda el vínculo entre la tierra, la lluvia y las manos que la trabajan durante meses antes del día magno.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="p1"></div><div class="p2"></div><div class="p3"></div>
+      </div>
+
+      <section style="padding:30px 22px 0">
+        <div class="eyebrow">Gira la maqueta</div>
+        <div class="v360" style="position:relative;height:240px;margin-top:12px;cursor:grab;overflow:hidden;touch-action:pan-y;background-size:300% 100%;background-image:linear-gradient(90deg,#6b4430,#C98B2B,#A8553A,#C8341E,#3b2a1e,#6b4430)">
+          <div style="position:absolute;left:12px;top:12px;background:var(--kraft);font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:5px 8px">360° · <span class="deg">0</span>°</div>
+          <div style="position:absolute;left:0;right:0;bottom:14px;text-align:center;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.1em">← ARRASTRA PARA GIRAR →</div>
+        </div>
+        <div style="height:3px;background:rgba(43,29,20,.15);margin-top:10px"><div class="bar" style="height:3px;width:0;background:var(--bermellon)"></div></div>
+      </section>
+
+      <dl class="info">
+        <dt>Disfraz</dt><dd>Por confirmar</dd>
+        <dt>Taller</dt><dd>Barrio Lourdes · Pasto</dd>
+        <dt>Exhibición</dt><dd>La obra sale a la calle desde el 28 de diciembre</dd>
+        <a class="btn ghost">Cómo llegar ↗</a>
+        <div class="note">Abre Google Maps o Waze</div>
+      </dl>
+
+      <section style="padding:30px 22px 0">
+        <div class="eyebrow">Obras anteriores del creador</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+          <div><div class="p2" style="height:110px"></div><div style="font-family:var(--mono);font-size:10px;opacity:.6;margin-top:6px">2025 · El Guardián del Agua</div></div>
+          <div><div class="p3" style="height:110px"></div><div style="font-family:var(--mono);font-size:10px;opacity:.6;margin-top:6px">2023 · Tierra de Volcanes</div></div>
+        </div>
+      </section>
+
+      <section style="padding-bottom:140px">
+        <div class="eyebrow">También te puede interesar</div>
+        <h2 style="font-size:24px">Otras obras</h2>
+      </section>
+    </div>
+
+    <div class="sticky"><a class="btn primary">Quiero ser parte de la obra</a></div>
+    <nav class="tabbar">
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12"/><path d="M2 11l4-4 4 4 3-3 3 3"/></svg>Carrozas</div>
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 16s5-4.5 5-8.5a5 5 0 10-10 0C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.6"/></svg>Mapa</div>
+      <div class="tab">Creadores</div>
+      <div class="tab">Más</div>
+    </nav>
+  </div></div>
+</div>
+
+<div>
+  <div class="label">03 · Ficha de carroza (taller privado)</div>
+  <div class="phone"><div class="screen">
+    <div class="grain"></div>
+    <div class="top"><span class="menu">← VOLVER</span><span class="logo">La Ruta<i>.</i></span><span class="menu">ES · EN</span></div>
+    <div class="scroll">
+      <div class="fh" style="background:linear-gradient(180deg,rgba(43,29,20,.25),rgba(43,29,20,0) 40%,rgba(43,29,20,.6)),radial-gradient(circle at 70% 30%,#C8341E,transparent 45%),radial-gradient(circle at 20% 80%,#C98B2B,transparent 50%),#3b2a1e">
+        <div class="play"><i>▶</i>VER INTRODUCCIÓN</div>
+      </div>
+      <div class="ft">
+        <div class="no">N.º 12 · EDICIÓN 2027</div>
+        <h1>El Sueño del Cóndor</h1>
+        <div class="maker"><div class="avatar"></div><div><small>Hecha por</small><b>Maestro Alirio Benavides</b></div></div>
+      </div>
+
+      <div class="story">
+        <div class="eyebrow" style="margin-bottom:12px">La historia</div>
+        <p>Una obra sobre la libertad, la altura y la memoria andina. El cóndor, guardián de los Andes, vuela sobre una carroza que su creador ha trabajado durante todo el año.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="p2"></div><div class="p1"></div><div class="p3"></div>
+      </div>
+
+      <dl class="info">
+        <dt>Disfraz</dt><dd>Por confirmar</dd>
+        <dt>Taller</dt><dd>Taller privado · Sur de Pasto</dd>
+        <dt>Acceso</dt><dd>Solo con visita coordinada</dd>
+        <a class="btn ghost">Solicitar visita</a>
+        <div class="note">Coordinamos la visita contigo por WhatsApp</div>
+      </dl>
+      <div style="height:150px"></div>
+    </div>
+
+    <div class="sticky"><a class="btn primary">Quiero ser parte de la obra</a></div>
+    <nav class="tabbar">
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12"/><path d="M2 11l4-4 4 4 3-3 3 3"/></svg>Carrozas</div>
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 16s5-4.5 5-8.5a5 5 0 10-10 0C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.6"/></svg>Mapa</div>
+      <div class="tab">Creadores</div>
+      <div class="tab">Más</div>
+    </nav>
+  </div></div>
+</div>
+
+<div>
+  <div class="label">04 · Catálogo de carrozas</div>
+  <div class="phone"><div class="screen">
+    <div class="grain"></div>
+    <div class="top" style="background:var(--kraft);color:var(--cafe);border-bottom:1px solid rgba(43,29,20,.1)"><span class="logo">La Ruta<i>.</i></span><span class="menu">ES · EN</span></div>
+    <div class="scroll" style="padding-top:62px">
+      <section style="padding-bottom:20px">
+        <div class="eyebrow">Edición 2027 · 18 obras</div>
+        <h2>Carrozas</h2>
+        <div style="display:flex;gap:8px;margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;flex-wrap:wrap">
+          <span style="background:var(--cafe);color:var(--kraft);padding:7px 12px">TODAS</span>
+          <span style="border:1px solid var(--cafe);padding:7px 12px">TALLER ABIERTO</span>
+          <span style="border:1px solid var(--cafe);padding:7px 12px">TALLER PRIVADO</span>
+        </div>
+        <div class="cards">
+          <div class="card" style="background:var(--carton)"><div class="img p1"><span class="chip">Taller abierto</span></div><div class="meta"><div class="no">N.º 07</div><h3>Raíces del Galeras</h3><div class="by">Taller Hermanos Chachinoy</div></div></div>
+          <div class="card" style="background:var(--carton)"><div class="img p2"><span class="chip res">Taller privado</span></div><div class="meta"><div class="no">N.º 12</div><h3>El Sueño del Cóndor</h3><div class="by">Maestro Alirio Benavides</div></div></div>
+          <div class="card" style="background:var(--carton)"><div class="img p3"><span class="chip">Taller abierto</span></div><div class="meta"><div class="no">N.º 15</div><h3>Voces de la Montaña</h3><div class="by">Taller Casa del Cartón</div></div></div>
+        </div>
+      </section>
+    </div>
+    <nav class="tabbar">
+      <div class="tab" style="opacity:1"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12"/><path d="M2 11l4-4 4 4 3-3 3 3"/></svg>Carrozas</div>
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 16s5-4.5 5-8.5a5 5 0 10-10 0C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.6"/></svg>Mapa</div>
+      <div class="tab cupo">Ser parte</div>
+      <div class="tab">Más</div>
+    </nav>
+  </div></div>
+</div>
+
+<div>
+  <div class="label">05 · Mapa de talleres</div>
+  <div class="phone"><div class="screen">
+    <div class="grain"></div>
+    <div class="top" style="background:var(--kraft);color:var(--cafe);z-index:7"><span class="logo">La Ruta<i>.</i></span><span class="menu">ES · EN</span></div>
+    <div style="position:absolute;inset:0;background:
+      repeating-linear-gradient(0deg,transparent 0 39px,rgba(43,29,20,.09) 39px 40px),
+      repeating-linear-gradient(90deg,transparent 0 39px,rgba(43,29,20,.09) 39px 40px),var(--carton)">
+      <svg viewBox="0 0 370 780" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><path d="M30 700 C110 560 80 480 200 420 S300 260 340 120" stroke="#A8553A" stroke-width="2.5" fill="none" stroke-dasharray="6 6"/></svg>
+      <span class="pin" style="left:60px;top:640px"></span>
+      <span class="pin" style="left:178px;top:410px"></span>
+      <span class="pin" style="left:320px;top:150px"></span>
+      <span class="pin" style="left:120px;top:520px"></span>
+      <span class="zone" style="left:250px;top:300px"></span>
+    </div>
+    <div style="position:absolute;left:14px;right:14px;bottom:84px;z-index:7;background:var(--kraft);padding:14px;display:flex;gap:14px;align-items:center;box-shadow:0 10px 30px -10px rgba(43,29,20,.5)">
+      <div class="p1" style="width:72px;height:72px;flex:none"></div>
+      <div style="flex:1"><div style="font-family:var(--mono);font-size:10px;opacity:.6">N.º 07 · TALLER ABIERTO</div><b style="font-family:var(--serif);font-size:18px">Raíces del Galeras</b><div style="font-size:12px;opacity:.7;margin-top:2px">Barrio Lourdes · 12 min</div></div>
+      <a class="btn primary" style="padding:12px 14px;font-size:12px">Ir ↗</a>
+    </div>
+    <nav class="tabbar" style="z-index:8">
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12"/><path d="M2 11l4-4 4 4 3-3 3 3"/></svg>Carrozas</div>
+      <div class="tab" style="opacity:1"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 16s5-4.5 5-8.5a5 5 0 10-10 0C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.6"/></svg>Mapa</div>
+      <div class="tab cupo">Ser parte</div>
+      <div class="tab">Más</div>
+    </nav>
+  </div></div>
+</div>
+
+<div>
+  <div class="label">06 · Creadores</div>
+  <div class="phone"><div class="screen">
+    <div class="grain"></div>
+    <div class="top" style="background:var(--kraft);color:var(--cafe);border-bottom:1px solid rgba(43,29,20,.1)"><span class="logo">La Ruta<i>.</i></span><span class="menu">ES · EN</span></div>
+    <div class="scroll" style="padding-top:62px">
+      <section style="padding-bottom:20px">
+        <div class="eyebrow">Las manos detrás de la obra</div>
+        <h2>Creadores</h2>
+        <p style="margin-top:12px;font-size:14px;line-height:1.5;opacity:.75">Maestros artesanos y talleres que construyen las carrozas del Desfile Magno.</p>
+        <div style="margin-top:22px">
+          <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid rgba(43,29,20,.18)">
+            <div class="avatar" style="width:64px;height:64px"></div>
+            <div style="flex:1"><div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;opacity:.6">TALLER · 3 INTEGRANTES</div><b style="font-family:var(--serif);font-size:19px">Hermanos Chachinoy</b><div style="font-size:12px;opacity:.7;margin-top:2px">1 carroza · Barrio Lourdes</div></div><span>→</span>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid rgba(43,29,20,.18)">
+            <div class="avatar" style="width:64px;height:64px;background:radial-gradient(circle at 40% 35%,#C8341E,#3b2a1e)"></div>
+            <div style="flex:1"><div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;opacity:.6">MAESTRO ARTESANO</div><b style="font-family:var(--serif);font-size:19px">Alirio Benavides</b><div style="font-size:12px;opacity:.7;margin-top:2px">1 carroza · Sur de Pasto</div></div><span>→</span>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center;padding:16px 0;border-top:1px solid rgba(43,29,20,.18);border-bottom:1px solid rgba(43,29,20,.18)">
+            <div class="avatar" style="width:64px;height:64px;background:radial-gradient(circle at 40% 35%,#A8553A,#2B1D14)"></div>
+            <div style="flex:1"><div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;opacity:.6">TALLER · 5 INTEGRANTES</div><b style="font-family:var(--serif);font-size:19px">Casa del Cartón</b><div style="font-size:12px;opacity:.7;margin-top:2px">2 carrozas · Centro</div></div><span>→</span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <nav class="tabbar">
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12"/><path d="M2 11l4-4 4 4 3-3 3 3"/></svg>Carrozas</div>
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 16s5-4.5 5-8.5a5 5 0 10-10 0C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.6"/></svg>Mapa</div>
+      <div class="tab cupo">Ser parte</div>
+      <div class="tab">Más</div>
+    </nav>
+  </div></div>
+</div>
+
+<div>
+  <div class="label">07 · Perfil de creador</div>
+  <div class="phone"><div class="screen">
+    <div class="grain"></div>
+    <div class="top"><span class="menu">← VOLVER</span><span class="logo">La Ruta<i>.</i></span><span class="menu">ES · EN</span></div>
+    <div class="scroll">
+      <div class="fh" style="height:340px;background:linear-gradient(180deg,rgba(43,29,20,.25),rgba(43,29,20,0) 40%,rgba(43,29,20,.7)),radial-gradient(circle at 35% 35%,#C98B2B,transparent 50%),radial-gradient(circle at 75% 75%,#A8553A,transparent 55%),#4a2f20"></div>
+      <div class="ft">
+        <div class="no">TALLER · DESDE 1998</div>
+        <h1>Hermanos Chachinoy</h1>
+      </div>
+      <div class="story">
+        <div class="eyebrow" style="margin-bottom:12px">Su historia</div>
+        <p>Tres hermanos que aprendieron el oficio de su familia y llevan más de veinte años dando forma al carnaval con cartón, papel y paciencia.</p>
+      </div>
+      <dl class="info">
+        <dt>Integrantes</dt><dd>Luis, Marco y Daniel Chachinoy</dd>
+        <dt>Taller</dt><dd>Barrio Lourdes · Pasto</dd>
+        <dt>Acceso</dt><dd>Taller abierto</dd>
+      </dl>
+      <section style="padding-bottom:20px">
+        <div class="eyebrow">Obras anteriores destacadas</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
+          <div><div class="p2" style="height:140px"></div><div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;opacity:.6;margin-top:8px">2025</div><b style="font-family:var(--serif);font-size:15px">El Guardián del Agua</b></div>
+          <div><div class="p3" style="height:140px"></div><div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;opacity:.6;margin-top:8px">2023</div><b style="font-family:var(--serif);font-size:15px">Tierra de Volcanes</b></div>
+        </div>
+      </section>
+
+      <section style="padding-bottom:130px">
+        <div class="eyebrow">Sus obras</div>
+        <div class="card" style="background:var(--carton);margin-top:14px"><div class="img p1" style="height:180px"><span class="chip">Taller abierto</span></div><div class="meta"><div class="no">N.º 07</div><h3>Raíces del Galeras</h3><a class="btn primary" style="margin-top:12px;font-size:13px;padding:12px 16px">Quiero ser parte de la obra</a></div></div>
+      </section>
+    </div>
+    <nav class="tabbar">
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="14" height="12"/><path d="M2 11l4-4 4 4 3-3 3 3"/></svg>Carrozas</div>
+      <div class="tab"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 16s5-4.5 5-8.5a5 5 0 10-10 0C4 11.5 9 16 9 16z"/><circle cx="9" cy="7.5" r="1.6"/></svg>Mapa</div>
+      <div class="tab" style="opacity:1">Creadores</div>
+      <div class="tab">Más</div>
+    </nav>
+  </div></div>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.v360').forEach(function(el){
+  var pos=0,down=false,startX=0,startPos=0;
+  var deg=el.querySelector('.deg'),bar=el.parentElement.querySelector('.bar');
+  function render(){
+    var p=((pos%1)+1)%1;
+    el.style.backgroundPosition=(p*100*1.5)+'% 0';
+    deg.textContent=Math.round(p*360);
+    bar.style.width=(p*100)+'%';
+  }
+  el.addEventListener('pointerdown',function(e){down=true;startX=e.clientX;startPos=pos;el.setPointerCapture(e.pointerId);el.style.cursor='grabbing'});
+  el.addEventListener('pointermove',function(e){if(!down)return;pos=startPos-(e.clientX-startX)/300;render()});
+  el.addEventListener('pointerup',function(){down=false;el.style.cursor='grab'});
+  render();
+});
+</script>
+</body>
+</html>
