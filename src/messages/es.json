@@ -19,7 +19,8 @@
     "close": "Cerrar",
     "skip": "Saltar al contenido",
     "primary": "Navegación principal",
-    "mobile": "Navegación móvil"
+    "mobile": "Navegación móvil",
+    "dynamics": "Dinámicas"
   },
   "common": {
     "number": "N.º {n}",
@@ -180,5 +181,14 @@
     "title": "Esta ruta no existe",
     "text": "No encontramos la página que buscas.",
     "cta": "Volver al inicio"
+  },
+  "dynamics": {
+    "eyebrow": "Próximamente",
+    "title": "Dinámicas",
+    "intro": "Estamos preparando formas de vivir el carnaval más allá del desfile: votaciones, premios y sorpresas para quienes siguen la ruta.",
+    "teaserTag": "En preparación",
+    "teaserTitle": "La ganadora del pueblo",
+    "teaserText": "Vota por tu carroza favorita y ayuda a elegir la obra que más conquistó a la gente.",
+    "cta": "Ver carrozas"
   }
 }

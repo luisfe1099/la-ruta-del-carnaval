@@ -19,7 +19,8 @@
     "close": "Close",
     "skip": "Skip to content",
     "primary": "Main navigation",
-    "mobile": "Mobile navigation"
+    "mobile": "Mobile navigation",
+    "dynamics": "Dynamics"
   },
   "common": {
     "number": "No. {n}",
@@ -180,5 +181,14 @@
     "title": "This route doesn't exist",
     "text": "We couldn't find the page you're looking for.",
     "cta": "Back home"
+  },
+  "dynamics": {
+    "eyebrow": "Coming soon",
+    "title": "Dynamics",
+    "intro": "We're preparing ways to live the carnival beyond the parade: votes, awards and surprises for everyone following the route.",
+    "teaserTag": "In the works",
+    "teaserTitle": "The People's Choice",
+    "teaserText": "Vote for your favorite float and help pick the piece that won people over the most.",
+    "cta": "See floats"
   }
 }

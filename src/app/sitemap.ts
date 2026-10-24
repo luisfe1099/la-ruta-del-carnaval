@@ -12,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/creadores",
     "/el-carnaval",
     "/como-participar",
+    "/dinamicas",
     "/contacto",
     ...floats.map((s) => `/carrozas/${s}`),
     ...creators.map((s) => `/creadores/${s}`),

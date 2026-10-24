@@ -70,6 +70,11 @@ const Icons = {
       <path d="M3.5 15.5c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5" />
     </svg>
   ),
+  dynamics: (
+    <svg {...icon}>
+      <path d="M9 2.5l1.9 4 4.4.5-3.3 3 .9 4.4L9 12.2 5.1 14.4 6 10 2.7 7l4.4-.5z" />
+    </svg>
+  ),
   more: (
     <svg {...icon} fill="currentColor" stroke="none">
       <circle cx="3.5" cy="9" r="1.4" />
@@ -106,6 +111,7 @@ export function SiteChrome() {
     { href: "/carrozas", label: t("floats") },
     { href: "/mapa", label: t("map") },
     { href: "/creadores", label: t("creators") },
+    { href: "/dinamicas", label: t("dynamics") },
     { href: "/el-carnaval", label: t("carnival") },
     { href: "/como-participar", label: t("howTo") },
     { href: "/contacto", label: t("contact") },
@@ -113,6 +119,7 @@ export function SiteChrome() {
 
   const sheetLinks = [
     { href: "/creadores", label: t("creators") },
+    { href: "/dinamicas", label: t("dynamics") },
     { href: "/el-carnaval", label: t("carnival") },
     { href: "/como-participar", label: t("howTo") },
     { href: "/contacto", label: t("contact") },
@@ -122,10 +129,11 @@ export function SiteChrome() {
     { href: "/carrozas", label: t("floats"), icon: Icons.floats },
     { href: "/mapa", label: t("map"), icon: Icons.map },
     { href: "/creadores", label: t("creators"), icon: Icons.creators },
+    { href: "/dinamicas", label: t("dynamics"), icon: Icons.dynamics },
   ];
 
   const tabClass = (active: boolean) =>
-    `flex h-full flex-col items-center justify-center gap-1 font-mono text-[10px] uppercase tracking-[0.1em] transition-opacity ${
+    `flex h-full flex-col items-center justify-center gap-1 font-mono text-[10px] uppercase tracking-[0.1em] transition-opacity max-[360px]:text-[8.5px] max-[360px]:tracking-[0.03em] ${
       active ? "opacity-100" : "opacity-70 hover:opacity-100"
     }`;
 
@@ -195,7 +203,7 @@ export function SiteChrome() {
         className="fixed inset-x-3 bottom-[calc(var(--tabbar-gap)+env(safe-area-inset-bottom))] z-50 rounded-2xl bg-cafe text-kraft shadow-[0_8px_28px_rgba(43,29,20,0.35)] md:hidden"
       >
         <ul
-          className="grid h-[var(--tabbar-h)] grid-cols-4 items-center gap-1 px-2"
+          className="grid h-[var(--tabbar-h)] grid-cols-5 items-center gap-0.5 px-1"
         >
           {tabs.map((tab) => (
             <li key={tab.href} className="h-full">
