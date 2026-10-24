@@ -41,7 +41,7 @@ design/maqueta.html    Maqueta visual aprobada
 3. `npm run studio` abre el Studio con los esquemas de `sanity/schemaTypes`.
 4. Para refrescar al publicar: webhook de Sanity → `POST /api/revalidate?secret=<SANITY_REVALIDATE_SECRET>`. Sin webhook, las páginas se regeneran cada 5 min (ISR).
 
-Los componentes no cambian: solo se cambia la fuente en `src/data/source.ts`.
+Los componentes no cambian: la fuente se elige con `CONTENT_SOURCE` (ver `src/data/source.ts`).
 
 ## Privacidad de talleres
 
