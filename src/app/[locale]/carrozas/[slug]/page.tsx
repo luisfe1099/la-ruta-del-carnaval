@@ -4,6 +4,7 @@ import { FloatCard } from "@/components/float-card";
 import { Media } from "@/components/media";
 import { Reveal } from "@/components/motion";
 import { Model3D } from "@/components/model-3d";
+import { GalleryCarousel } from "@/components/gallery-carousel";
 import { StickyCta } from "@/components/sticky-cta";
 import { Container, Eyebrow, ExternalButton } from "@/components/ui";
 import { MIN_360_FRAMES, Viewer360 } from "@/components/viewer-360";
@@ -52,7 +53,6 @@ export default async function FloatPage({ params }: PageProps<"/[locale]/carroza
   const joinHref = whatsappLink(tw("float", { name: float.name, number: n, year: float.edition.year }));
   const visitHref = whatsappLink(tw("visit", { name: float.name, number: n }));
   const hasViewer = float.viewer360 && float.maquetteFrames.length >= MIN_360_FRAMES;
-  const [mosaic, extra] = [float.gallery.slice(0, 3), float.gallery.slice(3)];
 
   return (
     <article>
@@ -65,36 +65,10 @@ export default async function FloatPage({ params }: PageProps<"/[locale]/carroza
             {float.videoUrl && <VideoModal url={float.videoUrl} className="absolute bottom-[18px] right-[18px] z-[2]" />}
           </div>
 
-          {mosaic.length > 0 && (
+          {float.gallery.length > 0 && (
             <Reveal className="order-4 mt-7 px-[22px] lg:mt-0 lg:px-0">
               <h2 className="sr-only">{t("gallery")}</h2>
-              <div
-                className={`grid gap-1.5 ${
-                  mosaic.length >= 3
-                    ? "grid-cols-[2fr_1fr] grid-rows-[120px_120px] md:grid-rows-[170px_170px]"
-                    : mosaic.length === 2
-                      ? "grid-cols-2 grid-rows-[200px] md:grid-rows-[260px]"
-                      : "grid-cols-1 grid-rows-[220px] md:grid-rows-[320px]"
-                }`}
-              >
-                {mosaic.map((g, i) => (
-                  <div
-                    key={i}
-                    className={`relative overflow-hidden ${mosaic.length >= 3 && i === 0 ? "row-span-2" : ""}`}
-                  >
-                    <Media image={g} sizes="(min-width: 1024px) 460px, 66vw" />
-                  </div>
-                ))}
-              </div>
-              {extra.length > 0 && (
-                <div className="mt-1.5 grid grid-cols-3 gap-1.5">
-                  {extra.map((g, i) => (
-                    <div key={i} className="relative h-[110px] overflow-hidden">
-                      <Media image={g} sizes="33vw" />
-                    </div>
-                  ))}
-                </div>
-              )}
+              <GalleryCarousel images={float.gallery} />
             </Reveal>
           )}
 

@@ -102,7 +102,11 @@
     "closeVideo": "Close video",
     "previousWorks": "Previous works by this maker",
     "otherEyebrow": "You might also like",
-    "otherTitle": "Other pieces"
+    "otherTitle": "Other pieces",
+    "expand": "Enlarge photo",
+    "prev": "Previous",
+    "next": "Next",
+    "closeGallery": "Close"
   },
   "map": {
     "title": "Workshop map",

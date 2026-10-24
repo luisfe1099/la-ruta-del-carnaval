@@ -102,7 +102,11 @@
     "closeVideo": "Cerrar video",
     "previousWorks": "Obras anteriores del creador",
     "otherEyebrow": "También te puede interesar",
-    "otherTitle": "Otras obras"
+    "otherTitle": "Otras obras",
+    "expand": "Ampliar foto",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "closeGallery": "Cerrar"
   },
   "map": {
     "title": "Mapa de talleres",
