@@ -31,7 +31,7 @@ export default async function MapPage({ params }: PageProps<"/[locale]/mapa">) {
       <h1 id="map-title" className="sr-only">
         {t("title")}
       </h1>
-      <div className="h-[calc(100dvh-60px-var(--tabbar-h)-env(safe-area-inset-bottom))] md:h-[calc(100dvh-65px)]">
+      <div className="h-[calc(100dvh-60px-var(--tabbar-space))] md:h-[calc(100dvh-65px)]">
         <MapLoader points={points} visitHrefs={visitHrefs} />
       </div>
       <div className="flex flex-wrap gap-x-6 gap-y-1 bg-kraft px-[22px] py-3 font-mono text-[10px] opacity-80 md:px-8">
