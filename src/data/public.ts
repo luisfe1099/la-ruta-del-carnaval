@@ -71,6 +71,37 @@ export interface FloatDetail extends FloatCardData {
   edition: PublicEdition;
   /** Obras destacadas del mismo creador en otras ediciones (máx. 2). */
   pastWorks: FloatCardData[];
+  experience?: ExperienceRef;
+}
+
+export interface ExperienceRef {
+  slug: string;
+  name: string;
+}
+
+export interface ExperienceCardData extends ExperienceRef {
+  image: PublicImage;
+  creatorName: string;
+  creatorSlug: string;
+  neighborhood: string;
+  durationHours: number;
+  maxGroup: number;
+  priceFrom?: number;
+  languages: string[];
+}
+
+export interface ExperienceDetail extends ExperienceCardData {
+  description: string;
+  learns: string[];
+  activity: string;
+  keepsake: string;
+  includes: string[];
+  gallery: PublicImage[];
+  seasonStart?: string;
+  seasonEnd?: string;
+  year: number;
+  /** Solo zona aproximada (barrio); la dirección se comparte por WhatsApp. */
+  creator: PublicCreatorRef;
 }
 
 export interface CreatorListItem extends PublicCreatorRef {
@@ -90,6 +121,7 @@ export interface CreatorDetail extends PublicCreatorRef {
   access?: "open" | "private";
   floats: (FloatCardData & { canJoin: boolean })[];
   pastWorks: FloatCardData[];
+  experience?: ExperienceRef;
 }
 
 export interface MapPoint {

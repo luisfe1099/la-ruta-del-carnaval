@@ -2,6 +2,7 @@ import type {
   ContentSnapshot,
   Creator,
   Edition,
+  Experience,
   Float,
   ImageAsset,
   Localized,
@@ -298,4 +299,50 @@ export const floats: Float[] = [
   },
 ];
 
-export const sampleSnapshot: ContentSnapshot = { editions, creators, floats };
+export const experiences: Experience[] = [
+  {
+    id: "ex-chachinoy",
+    name: "Experiencia del Carnaval",
+    slug: "experiencia-del-carnaval-chachinoy",
+    editionId: "ed-2027",
+    creatorId: "cr-chachinoy",
+    description: l(
+      "Una tarde en el taller de los hermanos Chachinoy: ves cómo nace una carroza, conoces a los artesanos y pones tus propias manos en el cartón.",
+      "An afternoon in the Chachinoy brothers' workshop: see how a float is born, meet the artisans and put your own hands to the cardboard.",
+    ),
+    durationHours: 4,
+    learns: [
+      l("Cómo se talla una escultura a gran escala", "How a large-scale sculpture is carved"),
+      l("La técnica del empapelado, capa por capa", "The papering technique, layer by layer"),
+      l("La historia del Carnaval de Negros y Blancos contada por sus artesanos", "The story of the Blacks and Whites Carnival told by its artisans"),
+    ],
+    activity: l(
+      "Empapelas y pintas una pieza pequeña bajo la guía de los maestros.",
+      "You paper and paint a small piece guided by the master artisans.",
+    ),
+    keepsake: l(
+      "Te llevas la pieza que hiciste como recuerdo del carnaval.",
+      "You take home the piece you made as a carnival keepsake.",
+    ),
+    includes: [
+      l("Recorrido guiado por el taller", "Guided workshop tour"),
+      l("Materiales y actividad práctica", "Materials and hands-on activity"),
+      l("Recuerdo del carnaval", "Carnival keepsake"),
+      l("Refrigerio local", "Local snack"),
+    ],
+    languages: ["es", "en"],
+    maxGroup: 8,
+    priceFrom: 120000,
+    seasonStart: "2026-12-01",
+    seasonEnd: "2027-01-05",
+    mainImage: img(1, "Manos empapelando una pieza en el taller", "Hands papering a piece in the workshop"),
+    gallery: [
+      img(2, "Maestro tallando una figura", "Master artisan carving a figure"),
+      img(3, "Capas de papel y engrudo", "Layers of paper and paste"),
+      img(4, "Recuerdo terminado", "Finished keepsake"),
+    ],
+    published: true,
+  },
+];
+
+export const sampleSnapshot: ContentSnapshot = { editions, creators, floats, experiences };

@@ -20,7 +20,8 @@
     "skip": "Skip to content",
     "primary": "Main navigation",
     "mobile": "Mobile navigation",
-    "dynamics": "Dynamics"
+    "dynamics": "Dynamics",
+    "experiences": "Experiences"
   },
   "common": {
     "number": "No. {n}",
@@ -35,7 +36,8 @@
   "whatsapp": {
     "general": "Hi, I'd like to be part of the Carnival of Blacks and Whites with La Ruta del Carnaval. Could you tell me how to take part?",
     "float": "Hi, I'd like a spot on the piece \"{name}\" (No. {number}) in the {year} Carnival. Could you tell me how to take part?",
-    "visit": "Hi, I'd like to request a visit to the workshop of the piece \"{name}\" (No. {number}). When would it be possible?"
+    "visit": "Hi, I'd like to request a visit to the workshop of the piece \"{name}\" (No. {number}). When would it be possible?",
+    "experience": "Hi, I'd like to book the \"{name}\" at {workshop}. Desired date: ____. Number of people: ____. Could you confirm availability and price?"
   },
   "home": {
     "tag": "Pasto · Nariño · January 6",
@@ -190,5 +192,34 @@
     "teaserTitle": "The People's Choice",
     "teaserText": "Vote for your favorite float and help pick the piece that won people over the most.",
     "cta": "See floats"
+  },
+  "experiences": {
+    "eyebrow": "Carnival season",
+    "title": "Carnival Experience",
+    "intro": "Spend an afternoon in an artisan's workshop: see how a float is born, learn carving and papering, and take home a keepsake you made.",
+    "empty": "We'll announce this season's experiences soon.",
+    "hours": "{n} h",
+    "group": "Up to {n} people",
+    "from": "From {price} COP per person",
+    "priceNote": "The final price is confirmed via WhatsApp.",
+    "duration": "Duration",
+    "groupLabel": "Group",
+    "languages": "Languages",
+    "season": "Season",
+    "seasonRange": "{start} – {end}",
+    "learns": "What you'll learn",
+    "activity": "Hands-on activity",
+    "keepsake": "Your keepsake",
+    "includes": "Includes",
+    "gallery": "Gallery",
+    "host": "Host",
+    "zone": "{name} neighborhood · Pasto",
+    "privacy": "The workshop's exact address is shared via WhatsApp once your booking is confirmed.",
+    "cta": "Book experience",
+    "seeAll": "See experiences",
+    "view": "View experience",
+    "es": "Español",
+    "en": "English",
+    "offers": "Offers an experience"
   }
 }

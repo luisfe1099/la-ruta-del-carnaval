@@ -42,6 +42,7 @@ export default async function FloatPage({ params }: PageProps<"/[locale]/carroza
   const float = await getFloat(locale as Locale, slug);
   if (!float) notFound();
 
+  const tx = await getTranslations({ locale, namespace: "experiences" });
   const [t, tc, tw] = await Promise.all([
     getTranslations({ locale, namespace: "float" }),
     getTranslations({ locale, namespace: "common" }),
@@ -132,6 +133,14 @@ export default async function FloatPage({ params }: PageProps<"/[locale]/carroza
                 <b className="font-serif text-[17px] font-semibold">{float.creator.name}</b>
               </div>
             </Link>
+            {float.experience && (
+              <Link
+                href={`/experiencias/${float.experience.slug}`}
+                className="mt-3 inline-flex items-center gap-2 rounded-full border border-arcilla/40 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.1em] text-arcilla"
+              >
+                {tx("offers")} →
+              </Link>
+            )}
             {float.canJoin && (
               <ExternalButton href={joinHref} size="lg" className="mt-5 w-full max-md:hidden">
                 {t("cta")}

@@ -83,8 +83,34 @@ export interface Float {
   workshop: WorkshopLocation;
 }
 
+/** Experiencia en el taller (opcional por creador/taller). */
+export interface Experience {
+  id: string;
+  name: string;
+  slug: string;
+  editionId: string;
+  creatorId: string;
+  description: Localized;
+  durationHours: number;
+  /** Qué se aprende (p. ej. tallado, empapelado). */
+  learns: Localized[];
+  activity: Localized;
+  keepsake: Localized;
+  includes: Localized[];
+  languages: Locale[];
+  maxGroup: number;
+  /** Precio "desde" en COP; opcional. El valor final se confirma por WhatsApp. */
+  priceFrom?: number;
+  seasonStart?: string; // ISO yyyy-mm-dd
+  seasonEnd?: string; // ISO yyyy-mm-dd
+  mainImage: ImageAsset;
+  gallery: ImageAsset[];
+  published: boolean;
+}
+
 export interface ContentSnapshot {
   editions: Edition[];
   creators: Creator[];
   floats: Float[];
+  experiences: Experience[];
 }

@@ -35,8 +35,9 @@ export default async function CreatorPage({ params }: PageProps<"/[locale]/cread
   const c = await getCreator(locale as Locale, slug);
   if (!c) notFound();
 
-  const [t, tf, tw, edition] = await Promise.all([
+  const [t, tx, tf, tw, edition] = await Promise.all([
     getTranslations({ locale, namespace: "creators" }),
+    getTranslations({ locale, namespace: "experiences" }),
     getTranslations({ locale, namespace: "float" }),
     getTranslations({ locale, namespace: "whatsapp" }),
     getActiveEdition(),
@@ -85,6 +86,16 @@ export default async function CreatorPage({ params }: PageProps<"/[locale]/cread
               <dt className="font-mono text-[10px] uppercase tracking-[0.12em] opacity-60">{t("workshop")}</dt>
               <dd className="mt-[3px] text-sm">{c.neighborhood} · Pasto</dd>
             </div>
+            {c.experience && (
+              <div className="mb-3 last:mb-0">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.12em] opacity-60">{tx("title")}</dt>
+                <dd className="mt-[3px] text-sm">
+                  <Link href={`/experiencias/${c.experience.slug}`} className="text-arcilla underline underline-offset-4">
+                    {tx("offers")} →
+                  </Link>
+                </dd>
+              </div>
+            )}
             {c.access && (
               <div className="mb-3 last:mb-0">
                 <dt className="font-mono text-[10px] uppercase tracking-[0.12em] opacity-60">{t("access")}</dt>

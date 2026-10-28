@@ -20,7 +20,8 @@
     "skip": "Saltar al contenido",
     "primary": "Navegación principal",
     "mobile": "Navegación móvil",
-    "dynamics": "Dinámicas"
+    "dynamics": "Dinámicas",
+    "experiences": "Experiencias"
   },
   "common": {
     "number": "N.º {n}",
@@ -35,7 +36,8 @@
   "whatsapp": {
     "general": "Hola, quiero ser parte del Carnaval de Negros y Blancos con La Ruta del Carnaval. ¿Me cuentan cómo participar?",
     "float": "Hola, quiero un cupo en la obra «{name}» (N.º {number}) del Carnaval {year}. ¿Me cuentan cómo participar?",
-    "visit": "Hola, quiero solicitar una visita al taller de la obra «{name}» (N.º {number}). ¿Cuándo sería posible?"
+    "visit": "Hola, quiero solicitar una visita al taller de la obra «{name}» (N.º {number}). ¿Cuándo sería posible?",
+    "experience": "Hola, quiero reservar la «{name}» en {workshop}. Fecha deseada: ____. Número de personas: ____. ¿Me confirman disponibilidad y valor?"
   },
   "home": {
     "tag": "Pasto · Nariño · 6 de enero",
@@ -190,5 +192,34 @@
     "teaserTitle": "La ganadora del pueblo",
     "teaserText": "Vota por tu carroza favorita y ayuda a elegir la obra que más conquistó a la gente.",
     "cta": "Ver carrozas"
+  },
+  "experiences": {
+    "eyebrow": "Temporada de carnaval",
+    "title": "Experiencia del Carnaval",
+    "intro": "Pasa una tarde en el taller de un artesano: mira cómo nace una carroza, aprende a tallar y empapelar, y llévate un recuerdo hecho por ti.",
+    "empty": "Pronto anunciaremos las experiencias de esta temporada.",
+    "hours": "{n} h",
+    "group": "Hasta {n} personas",
+    "from": "Desde {price} COP por persona",
+    "priceNote": "El valor final se confirma por WhatsApp.",
+    "duration": "Duración",
+    "groupLabel": "Grupo",
+    "languages": "Idiomas",
+    "season": "Temporada",
+    "seasonRange": "{start} – {end}",
+    "learns": "Qué aprenderás",
+    "activity": "Actividad práctica",
+    "keepsake": "Tu recuerdo",
+    "includes": "Incluye",
+    "gallery": "Galería",
+    "host": "Anfitrión",
+    "zone": "Barrio {name} · Pasto",
+    "privacy": "La dirección exacta del taller se comparte por WhatsApp al confirmar tu reserva.",
+    "cta": "Reservar experiencia",
+    "seeAll": "Ver experiencias",
+    "view": "Ver experiencia",
+    "es": "Español",
+    "en": "English",
+    "offers": "Ofrece experiencia"
   }
 }

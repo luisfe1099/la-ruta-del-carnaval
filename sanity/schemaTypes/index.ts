@@ -165,4 +165,39 @@ export const float = defineType({
   preview: { select: { title: "name", subtitle: "number", media: "mainImage" } },
 });
 
-export const schemaTypes = [localizedString, localizedText, photo, workshopLocation, edition, creator, float];
+export const experience = defineType({
+  name: "experience",
+  title: "Experiencia",
+  type: "document",
+  description: "Visita guiada al taller de un creador. Es opcional por taller. Nunca incluyas la dirección exacta: se comparte por WhatsApp al confirmar.",
+  fields: [
+    defineField({ name: "name", title: "Nombre", type: "string", initialValue: "Experiencia del Carnaval", validation: (r) => r.required() }),
+    defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "name" }, validation: (r) => r.required() }),
+    defineField({ name: "edition", title: "Edición", type: "reference", to: [{ type: "edition" }], validation: (r) => r.required() }),
+    defineField({ name: "creator", title: "Creador / taller", type: "reference", to: [{ type: "creator" }], validation: (r) => r.required() }),
+    defineField({ name: "description", title: "Descripción", type: "localizedText" }),
+    defineField({ name: "durationHours", title: "Duración (horas)", type: "number", initialValue: 4, validation: (r) => r.required().positive() }),
+    defineField({ name: "learns", title: "Qué se aprende", description: "Ej.: tallado, empapelado.", type: "array", of: [{ type: "localizedString" }] }),
+    defineField({ name: "activity", title: "Actividad práctica", type: "localizedText" }),
+    defineField({ name: "keepsake", title: "Recuerdo que se llevan", type: "localizedText" }),
+    defineField({ name: "includes", title: "Qué incluye", type: "array", of: [{ type: "localizedString" }] }),
+    defineField({
+      name: "languages",
+      title: "Idiomas",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { list: [{ title: "Español", value: "es" }, { title: "English", value: "en" }] },
+      initialValue: ["es"],
+    }),
+    defineField({ name: "maxGroup", title: "Cupo máximo del grupo", type: "number", initialValue: 8, validation: (r) => r.required().integer().positive() }),
+    defineField({ name: "priceFrom", title: "Precio desde (COP, opcional)", description: "Se muestra como 'desde'. El valor final se confirma por WhatsApp.", type: "number" }),
+    defineField({ name: "seasonStart", title: "Temporada: desde", type: "date" }),
+    defineField({ name: "seasonEnd", title: "Temporada: hasta", type: "date" }),
+    defineField({ name: "mainImage", title: "Imagen principal", type: "photo" }),
+    defineField({ name: "gallery", title: "Galería", type: "array", of: [{ type: "photo" }] }),
+    defineField({ name: "published", title: "Publicada", type: "boolean", initialValue: false }),
+  ],
+  preview: { select: { title: "name", subtitle: "creator.name", media: "mainImage" } },
+});
+
+export const schemaTypes = [localizedString, localizedText, photo, workshopLocation, edition, creator, float, experience];

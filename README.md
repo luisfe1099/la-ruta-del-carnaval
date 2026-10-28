@@ -47,6 +47,16 @@ Los componentes no cambian: la fuente se elige con `CONTENT_SOURCE` (ver `src/da
 
 "Reservado" = taller **privado**; la obra se muestra igual. La ubicación exacta de un taller privado se descarta en `repository.ts` (y la consulta GROQ ni siquiera la pide), y los tipos públicos no tienen campo para ella. Por eso el dataset de Sanity debe ser privado: en uno público esa coordenada sería consultable por la API.
 
+## Experiencias (Fase 1)
+
+Visita de ~4 h al taller de un artesano (tallado, empapelado, actividad práctica y recuerdo). Es **opcional por taller**: solo aparece si existe un documento `Experiencia` publicado, ligado a un creador y a una edición.
+
+- Rutas: `/experiencias` y `/experiencias/[slug]`. En las fichas de carroza y de creador aparece "Ofrece experiencia" si el creador tiene una en la edición activa.
+- En Sanity: crea un documento **Experiencia** (nombre provisional "Experiencia del Carnaval"), elige creador y edición, y marca *Publicada*. Los datos de ejemplo están en `src/data/sample/index.ts`.
+- Precio: campo opcional "Precio desde (COP)"; el valor final se confirma por WhatsApp.
+- Reserva solo por WhatsApp (botón "Reservar experiencia", mensaje en `whatsapp.experience` de `src/messages`). Sin pago en línea ni base de datos todavía.
+- Privacidad: la experiencia solo muestra el barrio; la dirección exacta se comparte por WhatsApp al confirmar.
+
 ## Foto de portada
 
 Pon tu foto en `public/images/hero.jpg` (horizontal, mín. 1600 px de ancho) y haz push. Sin ese archivo se muestra el degradado de tierra. Se le superpone un velo oscuro para que el texto se lea.

@@ -4,6 +4,9 @@ import { getSnapshot } from "./source";
 import type {
   CreatorDetail,
   CreatorListItem,
+  ExperienceCardData,
+  ExperienceDetail,
+  ExperienceRef,
   FloatCardData,
   FloatDetail,
   MapPoint,
@@ -15,6 +18,7 @@ import type {
   ContentSnapshot,
   Creator,
   Edition,
+  Experience,
   Float,
   ImageAsset,
   Locale,
@@ -87,7 +91,10 @@ function index(snapshot: ContentSnapshot) {
     snapshot.editions.find((e) => e.active) ??
     [...snapshot.editions].sort((a, b) => b.year - a.year)[0] ??
     EMPTY_EDITION;
-  return { editions, creators, floats, active };
+  const experiences = (snapshot.experiences ?? []).filter(
+    (x) => x.published && creators.has(x.creatorId) && editions.has(x.editionId),
+  );
+  return { editions, creators, floats, experiences, active };
 }
 
 function card(
@@ -117,6 +124,27 @@ function creatorRef(c: Creator, locale: Locale) {
     portrait: image(c.portrait, locale, c.name),
   };
 }
+
+function experienceCard(x: Experience, locale: Locale, ctx: ReturnType<typeof index>): ExperienceCardData {
+  const c = ctx.creators.get(x.creatorId)!;
+  return {
+    slug: x.slug,
+    name: x.name,
+    image: image(x.mainImage, locale, x.name),
+    creatorName: c.name,
+    creatorSlug: c.slug,
+    neighborhood: c.neighborhood,
+    durationHours: x.durationHours,
+    maxGroup: x.maxGroup,
+    priceFrom: x.priceFrom,
+    languages: x.languages,
+  };
+}
+
+const experienceOf = (creatorId: string, ctx: ReturnType<typeof index>): ExperienceRef | undefined => {
+  const x = ctx.experiences.find((e) => e.creatorId === creatorId && e.editionId === ctx.active.id);
+  return x ? { slug: x.slug, name: x.name } : undefined;
+};
 
 const canJoin = (f: Float, ctx: ReturnType<typeof index>) =>
   f.acceptsPlayers && ctx.editions.get(f.editionId)?.id === ctx.active?.id;
@@ -173,6 +201,7 @@ export async function getFloat(locale: Locale, slug: string): Promise<FloatDetai
     creator: creatorRef(creator, locale),
     edition: edition(ed),
     pastWorks,
+    experience: experienceOf(f.creatorId, ctx),
   };
 }
 
@@ -261,5 +290,40 @@ export async function getCreator(locale: Locale, slug: string): Promise<CreatorD
         : undefined,
     floats: current.map((f) => ({ ...card(f, locale, ctx), canJoin: canJoin(f, ctx) })),
     pastWorks: past.map((f) => card(f, locale, ctx)),
+    experience: experienceOf(c.id, ctx),
+  };
+}
+
+/* ----------------------------- experiencias ----------------------------- */
+
+export async function getExperiences(locale: Locale): Promise<ExperienceCardData[]> {
+  const ctx = await ctxOf();
+  return ctx.experiences
+    .filter((x) => x.editionId === ctx.active.id)
+    .map((x) => experienceCard(x, locale, ctx));
+}
+
+export async function getExperienceSlugs(): Promise<string[]> {
+  return (await ctxOf()).experiences.map((x) => x.slug);
+}
+
+/** Solo datos públicos: la dirección del taller no se incluye (se comparte por WhatsApp). */
+export async function getExperience(locale: Locale, slug: string): Promise<ExperienceDetail | null> {
+  const ctx = await ctxOf();
+  const x = ctx.experiences.find((e) => e.slug === slug);
+  if (!x) return null;
+  const c = ctx.creators.get(x.creatorId)!;
+  return {
+    ...experienceCard(x, locale, ctx),
+    description: loc(x.description, locale) ?? "",
+    learns: x.learns.map((v) => loc(v, locale)).filter((v): v is string => Boolean(v)),
+    activity: loc(x.activity, locale) ?? "",
+    keepsake: loc(x.keepsake, locale) ?? "",
+    includes: x.includes.map((v) => loc(v, locale)).filter((v): v is string => Boolean(v)),
+    gallery: x.gallery.map((g) => image(g, locale, x.name)),
+    seasonStart: x.seasonStart,
+    seasonEnd: x.seasonEnd,
+    year: ctx.editions.get(x.editionId)!.year,
+    creator: creatorRef(c, locale),
   };
 }
