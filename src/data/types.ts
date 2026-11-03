@@ -83,24 +83,42 @@ export interface Float {
   workshop: WorkshopLocation;
 }
 
-/** Experiencia en el taller (opcional por creador/taller). */
+export type StopKind = "museum" | "transfer" | "workshop" | "keepsake" | "other";
+export type IncludeKey = "transport" | "guide" | "materials" | "keepsake";
+
+/** Parada del itinerario. La parada "workshop" usa el taller asignado al tour. */
+export interface TourStop {
+  kind: StopKind;
+  title: Localized;
+  description?: Localized;
+  /** Duración estimada en minutos; opcional (por confirmar tras el piloto). */
+  minutes?: number;
+}
+
+/** Tour guiado / experiencia: museo + traslado + taller + recuerdo. */
 export interface Experience {
   id: string;
   name: string;
   slug: string;
   editionId: string;
-  creatorId: string;
+  /** Taller (creador) de la parada práctica. Un tour = un taller; otros tours pueden usar otros. */
+  workshopId: string;
   description: Localized;
-  durationHours: number;
-  /** Qué se aprende (p. ej. tallado, empapelado). */
-  learns: Localized[];
-  activity: Localized;
-  keepsake: Localized;
-  includes: Localized[];
+  stops: TourStop[];
+  includes: IncludeKey[];
   languages: Locale[];
+  /** Duración total estimada; si `durationConfirmed` es false se muestra "por confirmar". */
+  durationMinHours?: number;
+  durationMaxHours?: number;
+  durationConfirmed: boolean;
+  /** Precio por persona en COP. Sin valor => "Por confirmar". */
+  pricePerPerson?: number;
+  /** Mínimo de personas por salida (por confirmar si falta). */
+  minGroup?: number;
   maxGroup: number;
-  /** Precio "desde" en COP; opcional. El valor final se confirma por WhatsApp. */
-  priceFrom?: number;
+  /** Hora de salida fija diaria (HH:mm). */
+  departureTime?: string;
+  meetingPoint?: Localized;
   seasonStart?: string; // ISO yyyy-mm-dd
   seasonEnd?: string; // ISO yyyy-mm-dd
   mainImage: ImageAsset;

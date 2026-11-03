@@ -47,15 +47,16 @@ Los componentes no cambian: la fuente se elige con `CONTENT_SOURCE` (ver `src/da
 
 "Reservado" = taller **privado**; la obra se muestra igual. La ubicación exacta de un taller privado se descarta en `repository.ts` (y la consulta GROQ ni siquiera la pide), y los tipos públicos no tienen campo para ella. Por eso el dataset de Sanity debe ser privado: en uno público esa coordenada sería consultable por la API.
 
-## Experiencias (Fase 1)
+## Experiencias (tour guiado)
 
-Visita de ~4 h al taller de un artesano (tallado, empapelado, actividad práctica y recuerdo). Es **opcional por taller**: solo aparece si existe un documento `Experiencia` publicado, ligado a un creador y a una edición.
+Tour guiado de 2 paradas: **Museo del Carnaval → traslado → taller de un artesano** (ejercicio práctico de tallado y empapelado) **→ recuerdo** del artesano, igual para todos. Transporte, guía local, materiales y recuerdo van incluidos.
 
-- Rutas: `/experiencias` y `/experiencias/[slug]`. En las fichas de carroza y de creador aparece "Ofrece experiencia" si el creador tiene una en la edición activa.
-- En Sanity: crea un documento **Experiencia** (nombre provisional "Experiencia del Carnaval"), elige creador y edición, y marca *Publicada*. Los datos de ejemplo están en `src/data/sample/index.ts`.
-- Precio: campo opcional "Precio desde (COP)"; el valor final se confirma por WhatsApp.
-- Reserva solo por WhatsApp (botón "Reservar experiencia", mensaje en `whatsapp.experience` de `src/messages`). Sin pago en línea ni base de datos todavía.
-- Privacidad: la experiencia solo muestra el barrio; la dirección exacta se comparte por WhatsApp al confirmar.
+- Rutas: `/experiencias` y `/experiencias/[slug]`. En la ficha del creador y de sus carrozas aparece "Taller del tour de experiencia" si es el taller asignado a un tour de la edición activa.
+- Modelo (`Experience` en `src/data/types.ts`, tipo `experience` en Sanity): itinerario de paradas (título, descripción, minutos), **un taller asignado por tour** (referencia a creador; para sumar talleres se crean más tours), qué incluye, idiomas, duración (mín/máx + "confirmada"), precio **por persona**, mínimo/máximo de personas, hora de salida diaria, punto de encuentro y fechas de temporada.
+- Valores pendientes: si falta el precio, el mínimo, la hora de salida o la duración no está confirmada, el sitio muestra **"Por confirmar"** (no se inventan cifras). Los datos de ejemplo están en `src/data/sample/index.ts` con esos campos sin valor hasta el tour piloto.
+- Reserva y pago solo por WhatsApp (botón "Reservar por WhatsApp", mensaje en `whatsapp.experience` de `src/messages`). Sin pago en línea ni base de datos.
+- Cancelación: reembolso total hasta 3 días antes (texto en `experiences.cancel`; mantenerlo coherente con los términos).
+- Privacidad: del taller solo se muestra el barrio; la dirección exacta se comparte por WhatsApp al confirmar.
 
 ## Foto de portada
 

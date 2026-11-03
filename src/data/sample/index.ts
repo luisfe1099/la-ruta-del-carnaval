@@ -301,38 +301,56 @@ export const floats: Float[] = [
 
 export const experiences: Experience[] = [
   {
-    id: "ex-chachinoy",
+    id: "ex-tour-1",
     name: "Experiencia del Carnaval",
-    slug: "experiencia-del-carnaval-chachinoy",
+    slug: "experiencia-del-carnaval",
     editionId: "ed-2027",
-    creatorId: "cr-chachinoy",
+    workshopId: "cr-chachinoy",
     description: l(
-      "Una tarde en el taller de los hermanos Chachinoy: ves cómo nace una carroza, conoces a los artesanos y pones tus propias manos en el cartón.",
-      "An afternoon in the Chachinoy brothers' workshop: see how a float is born, meet the artisans and put your own hands to the cardboard.",
+      "Un tour guiado por el corazón del carnaval: conoce su historia en el Museo del Carnaval y pon tus manos en el cartón en el taller de un artesano.",
+      "A guided tour through the heart of the carnival: learn its story at the Carnival Museum and put your hands to the cardboard in an artisan's workshop.",
     ),
-    durationHours: 4,
-    learns: [
-      l("Cómo se talla una escultura a gran escala", "How a large-scale sculpture is carved"),
-      l("La técnica del empapelado, capa por capa", "The papering technique, layer by layer"),
-      l("La historia del Carnaval de Negros y Blancos contada por sus artesanos", "The story of the Blacks and Whites Carnival told by its artisans"),
+    stops: [
+      {
+        kind: "museum",
+        title: l("Museo del Carnaval", "Carnival Museum"),
+        description: l(
+          "Recorrido con guía local por la historia, los personajes y las técnicas del Carnaval de Negros y Blancos.",
+          "Local-guided walk through the history, characters and techniques of the Blacks and Whites Carnival.",
+        ),
+      },
+      {
+        kind: "transfer",
+        title: l("Traslado al taller", "Transfer to the workshop"),
+        description: l("Transporte incluido desde el museo hasta el taller.", "Transport included from the museum to the workshop."),
+      },
+      {
+        kind: "workshop",
+        title: l("Taller del artesano", "Artisan's workshop"),
+        description: l(
+          "Conoce cómo nace una carroza y practica el tallado y el empapelado con guía de los maestros.",
+          "See how a float is born and practice carving and papering guided by the master artisans.",
+        ),
+      },
+      {
+        kind: "keepsake",
+        title: l("Tu recuerdo", "Your keepsake"),
+        description: l(
+          "Te llevas un objeto hecho por el artesano, el mismo para todos los participantes.",
+          "You take home an object made by the artisan, the same for every participant.",
+        ),
+      },
     ],
-    activity: l(
-      "Empapelas y pintas una pieza pequeña bajo la guía de los maestros.",
-      "You paper and paint a small piece guided by the master artisans.",
-    ),
-    keepsake: l(
-      "Te llevas la pieza que hiciste como recuerdo del carnaval.",
-      "You take home the piece you made as a carnival keepsake.",
-    ),
-    includes: [
-      l("Recorrido guiado por el taller", "Guided workshop tour"),
-      l("Materiales y actividad práctica", "Materials and hands-on activity"),
-      l("Recuerdo del carnaval", "Carnival keepsake"),
-      l("Refrigerio local", "Local snack"),
-    ],
+    includes: ["transport", "guide", "materials", "keepsake"],
     languages: ["es", "en"],
+    durationMinHours: 3,
+    durationMaxHours: 4,
+    durationConfirmed: false, // por confirmar tras el tour piloto
+    pricePerPerson: undefined, // por confirmar
+    minGroup: undefined, // por confirmar
     maxGroup: 8,
-    priceFrom: 120000,
+    departureTime: undefined, // por confirmar
+    meetingPoint: l("Museo del Carnaval (por confirmar)", "Carnival Museum (to be confirmed)"),
     seasonStart: "2026-12-01",
     seasonEnd: "2027-01-05",
     mainImage: img(1, "Manos empapelando una pieza en el taller", "Hands papering a piece in the workshop"),

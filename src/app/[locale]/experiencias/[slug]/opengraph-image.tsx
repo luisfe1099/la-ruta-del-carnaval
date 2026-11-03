@@ -30,7 +30,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
         </div>
         <div style={{ fontSize: 92, lineHeight: 1.05, marginTop: 16 }}>{x?.name ?? "La Ruta del Carnaval"}</div>
         <div style={{ fontSize: 32, marginTop: 20, opacity: 0.9, display: "flex" }}>
-          {x?.creatorName ?? ""}
+          {x?.workshopName ?? ""}
           <span style={{ marginLeft: "auto", display: "flex" }}>
             La Ruta del Carnaval<span style={{ color: "#C8341E" }}>.</span>
           </span>

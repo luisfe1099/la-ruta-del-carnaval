@@ -165,22 +165,64 @@ export const float = defineType({
   preview: { select: { title: "name", subtitle: "number", media: "mainImage" } },
 });
 
+export const tourStop = defineType({
+  name: "tourStop",
+  title: "Parada",
+  type: "object",
+  fields: [
+    defineField({
+      name: "kind",
+      title: "Tipo",
+      type: "string",
+      options: {
+        list: [
+          { title: "Museo", value: "museum" },
+          { title: "Traslado", value: "transfer" },
+          { title: "Taller (ejercicio práctico)", value: "workshop" },
+          { title: "Recuerdo", value: "keepsake" },
+          { title: "Otra", value: "other" },
+        ],
+      },
+      validation: (r) => r.required(),
+    }),
+    defineField({ name: "title", title: "Título", type: "localizedString" }),
+    defineField({ name: "description", title: "Descripción", type: "localizedText" }),
+    defineField({ name: "minutes", title: "Duración estimada (minutos)", type: "number" }),
+  ],
+  preview: { select: { title: "title.es", subtitle: "kind" } },
+});
+
 export const experience = defineType({
   name: "experience",
-  title: "Experiencia",
+  title: "Experiencia (tour guiado)",
   type: "document",
-  description: "Visita guiada al taller de un creador. Es opcional por taller. Nunca incluyas la dirección exacta: se comparte por WhatsApp al confirmar.",
+  description:
+    "Tour guiado: museo, traslado, taller con ejercicio práctico y recuerdo. Nunca incluyas la dirección exacta de un taller privado: se comparte por WhatsApp al confirmar.",
   fields: [
     defineField({ name: "name", title: "Nombre", type: "string", initialValue: "Experiencia del Carnaval", validation: (r) => r.required() }),
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "name" }, validation: (r) => r.required() }),
     defineField({ name: "edition", title: "Edición", type: "reference", to: [{ type: "edition" }], validation: (r) => r.required() }),
-    defineField({ name: "creator", title: "Creador / taller", type: "reference", to: [{ type: "creator" }], validation: (r) => r.required() }),
+    defineField({ name: "workshop", title: "Taller de la parada práctica", description: "Un taller por tour. Para sumar más talleres, crea otro tour.", type: "reference", to: [{ type: "creator" }], validation: (r) => r.required() }),
     defineField({ name: "description", title: "Descripción", type: "localizedText" }),
-    defineField({ name: "durationHours", title: "Duración (horas)", type: "number", initialValue: 4, validation: (r) => r.required().positive() }),
-    defineField({ name: "learns", title: "Qué se aprende", description: "Ej.: tallado, empapelado.", type: "array", of: [{ type: "localizedString" }] }),
-    defineField({ name: "activity", title: "Actividad práctica", type: "localizedText" }),
-    defineField({ name: "keepsake", title: "Recuerdo que se llevan", type: "localizedText" }),
-    defineField({ name: "includes", title: "Qué incluye", type: "array", of: [{ type: "localizedString" }] }),
+    defineField({ name: "stops", title: "Itinerario (en orden)", description: "Museo, traslado, taller y recuerdo.", type: "array", of: [{ type: "tourStop" }] }),
+    defineField({
+      name: "includes",
+      title: "Qué incluye",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        list: [
+          { title: "Transporte (museo → taller)", value: "transport" },
+          { title: "Guía local", value: "guide" },
+          { title: "Materiales", value: "materials" },
+          { title: "Recuerdo", value: "keepsake" },
+        ],
+      },
+      initialValue: ["transport", "guide", "materials", "keepsake"],
+    }),
+    defineField({ name: "durationMinHours", title: "Duración mínima (horas)", type: "number" }),
+    defineField({ name: "durationMaxHours", title: "Duración máxima (horas)", type: "number" }),
+    defineField({ name: "durationConfirmed", title: "Duración confirmada", description: "Si está apagado se muestra 'por confirmar'.", type: "boolean", initialValue: false }),
     defineField({
       name: "languages",
       title: "Idiomas",
@@ -189,15 +231,18 @@ export const experience = defineType({
       options: { list: [{ title: "Español", value: "es" }, { title: "English", value: "en" }] },
       initialValue: ["es"],
     }),
-    defineField({ name: "maxGroup", title: "Cupo máximo del grupo", type: "number", initialValue: 8, validation: (r) => r.required().integer().positive() }),
-    defineField({ name: "priceFrom", title: "Precio desde (COP, opcional)", description: "Se muestra como 'desde'. El valor final se confirma por WhatsApp.", type: "number" }),
+    defineField({ name: "pricePerPerson", title: "Precio por persona (COP)", description: "Vacío = 'Por confirmar'.", type: "number" }),
+    defineField({ name: "minGroup", title: "Mínimo de personas por salida", description: "Vacío = 'Por confirmar'.", type: "number" }),
+    defineField({ name: "maxGroup", title: "Máximo de personas", type: "number", initialValue: 8, validation: (r) => r.required().integer().positive() }),
+    defineField({ name: "departureTime", title: "Hora de salida (HH:mm)", type: "string", validation: (r) => r.regex(/^([01]\d|2[0-3]):[0-5]\d$/, { name: "HH:mm" }) }),
+    defineField({ name: "meetingPoint", title: "Punto de encuentro", type: "localizedString" }),
     defineField({ name: "seasonStart", title: "Temporada: desde", type: "date" }),
     defineField({ name: "seasonEnd", title: "Temporada: hasta", type: "date" }),
     defineField({ name: "mainImage", title: "Imagen principal", type: "photo" }),
     defineField({ name: "gallery", title: "Galería", type: "array", of: [{ type: "photo" }] }),
     defineField({ name: "published", title: "Publicada", type: "boolean", initialValue: false }),
   ],
-  preview: { select: { title: "name", subtitle: "creator.name", media: "mainImage" } },
+  preview: { select: { title: "name", subtitle: "workshop.name", media: "mainImage" } },
 });
 
-export const schemaTypes = [localizedString, localizedText, photo, workshopLocation, edition, creator, float, experience];
+export const schemaTypes = [localizedString, localizedText, photo, workshopLocation, edition, creator, float, tourStop, experience];

@@ -5,6 +5,7 @@ import { Container, Eyebrow } from "@/components/ui";
 import { getExperiences } from "@/data/repository";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { formatDuration, formatPrice } from "@/lib/experience-format";
 import { pageMetadata } from "@/lib/seo";
 
 export const revalidate = 300;
@@ -43,17 +44,13 @@ export default async function ExperiencesPage({ params }: PageProps<"/[locale]/e
                   </div>
                   <div className="p-5">
                     <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-arcilla">
-                      {t("hours", { n: x.durationHours })} · {t("group", { n: x.maxGroup })}
+                      {formatDuration(t, x)}
                     </div>
                     <h2 className="mt-1.5 font-serif text-2xl font-semibold">{x.name}</h2>
                     <p className="mt-1 text-sm opacity-75">
-                      {x.creatorName} · {x.neighborhood}
+                      {x.workshopName} · {x.neighborhood}
                     </p>
-                    {x.priceFrom != null && (
-                      <p className="mt-3 text-sm font-semibold">
-                        {t("from", { price: x.priceFrom.toLocaleString(locale === "es" ? "es-CO" : "en-US") })}
-                      </p>
-                    )}
+                    <p className="mt-3 text-sm font-semibold">{formatPrice(t, x, locale)}</p>
                   </div>
                 </Link>
               </Reveal>

@@ -16,10 +16,12 @@ const QUERY = /* groq */ `{
     "cover": cover${photo}
   },
   "experiences": *[_type == "experience" && published == true]{
-    "id": _id, name, "slug": slug.current, description, durationHours, learns, activity, keepsake,
-    includes, languages, maxGroup, priceFrom, seasonStart, seasonEnd, published,
+    "id": _id, name, "slug": slug.current, description, includes, languages,
+    durationMinHours, durationMaxHours, durationConfirmed, pricePerPerson, minGroup, maxGroup,
+    departureTime, meetingPoint, seasonStart, seasonEnd, published,
+    stops[]{ kind, title, description, minutes },
     "editionId": edition._ref,
-    "creatorId": creator._ref,
+    "workshopId": workshop._ref,
     "mainImage": mainImage${photo},
     "gallery": gallery[defined(asset)]${photo}
   },
@@ -60,8 +62,9 @@ export async function fetchSanitySnapshot(): Promise<ContentSnapshot> {
     creators: (data.creators ?? []).map((c) => ({ ...c, members: c.members ?? [] })),
     experiences: (data.experiences ?? []).map((x) => ({
       ...x,
-      learns: x.learns ?? [],
+      stops: x.stops ?? [],
       includes: x.includes ?? [],
+      durationConfirmed: x.durationConfirmed ?? false,
       languages: x.languages?.length ? x.languages : ["es"],
       gallery: x.gallery ?? [],
     })),

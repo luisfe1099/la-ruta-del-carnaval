@@ -81,27 +81,37 @@ export interface ExperienceRef {
 
 export interface ExperienceCardData extends ExperienceRef {
   image: PublicImage;
-  creatorName: string;
-  creatorSlug: string;
+  workshopName: string;
+  workshopSlug: string;
   neighborhood: string;
-  durationHours: number;
+  durationMinHours?: number;
+  durationMaxHours?: number;
+  durationConfirmed: boolean;
+  minGroup?: number;
   maxGroup: number;
-  priceFrom?: number;
+  pricePerPerson?: number;
   languages: string[];
+}
+
+export interface PublicStop {
+  kind: "museum" | "transfer" | "workshop" | "keepsake" | "other";
+  title: string;
+  description?: string;
+  minutes?: number;
 }
 
 export interface ExperienceDetail extends ExperienceCardData {
   description: string;
-  learns: string[];
-  activity: string;
-  keepsake: string;
-  includes: string[];
+  stops: PublicStop[];
+  includes: ("transport" | "guide" | "materials" | "keepsake")[];
   gallery: PublicImage[];
+  departureTime?: string;
+  meetingPoint?: string;
   seasonStart?: string;
   seasonEnd?: string;
   year: number;
-  /** Solo zona aproximada (barrio); la dirección se comparte por WhatsApp. */
-  creator: PublicCreatorRef;
+  /** Taller de la parada práctica. Solo barrio; si es privado nunca hay ubicación exacta. */
+  workshop: PublicCreatorRef & { access?: "open" | "private" };
 }
 
 export interface CreatorListItem extends PublicCreatorRef {

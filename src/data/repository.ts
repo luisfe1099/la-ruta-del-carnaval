@@ -92,7 +92,7 @@ function index(snapshot: ContentSnapshot) {
     [...snapshot.editions].sort((a, b) => b.year - a.year)[0] ??
     EMPTY_EDITION;
   const experiences = (snapshot.experiences ?? []).filter(
-    (x) => x.published && creators.has(x.creatorId) && editions.has(x.editionId),
+    (x) => x.published && creators.has(x.workshopId) && editions.has(x.editionId),
   );
   return { editions, creators, floats, experiences, active };
 }
@@ -126,23 +126,26 @@ function creatorRef(c: Creator, locale: Locale) {
 }
 
 function experienceCard(x: Experience, locale: Locale, ctx: ReturnType<typeof index>): ExperienceCardData {
-  const c = ctx.creators.get(x.creatorId)!;
+  const c = ctx.creators.get(x.workshopId)!;
   return {
     slug: x.slug,
     name: x.name,
     image: image(x.mainImage, locale, x.name),
-    creatorName: c.name,
-    creatorSlug: c.slug,
+    workshopName: c.name,
+    workshopSlug: c.slug,
     neighborhood: c.neighborhood,
-    durationHours: x.durationHours,
+    durationMinHours: x.durationMinHours,
+    durationMaxHours: x.durationMaxHours,
+    durationConfirmed: x.durationConfirmed,
+    minGroup: x.minGroup,
     maxGroup: x.maxGroup,
-    priceFrom: x.priceFrom,
+    pricePerPerson: x.pricePerPerson,
     languages: x.languages,
   };
 }
 
 const experienceOf = (creatorId: string, ctx: ReturnType<typeof index>): ExperienceRef | undefined => {
-  const x = ctx.experiences.find((e) => e.creatorId === creatorId && e.editionId === ctx.active.id);
+  const x = ctx.experiences.find((e) => e.workshopId === creatorId && e.editionId === ctx.active.id);
   return x ? { slug: x.slug, name: x.name } : undefined;
 };
 
@@ -307,23 +310,36 @@ export async function getExperienceSlugs(): Promise<string[]> {
   return (await ctxOf()).experiences.map((x) => x.slug);
 }
 
-/** Solo datos públicos: la dirección del taller no se incluye (se comparte por WhatsApp). */
+/** Solo datos públicos: del taller solo sale el barrio; la dirección se comparte por WhatsApp. */
 export async function getExperience(locale: Locale, slug: string): Promise<ExperienceDetail | null> {
   const ctx = await ctxOf();
   const x = ctx.experiences.find((e) => e.slug === slug);
   if (!x) return null;
-  const c = ctx.creators.get(x.creatorId)!;
+  const c = ctx.creators.get(x.workshopId)!;
+  const current = ctx.floats.filter((f) => f.creatorId === c.id && f.editionId === x.editionId);
   return {
     ...experienceCard(x, locale, ctx),
     description: loc(x.description, locale) ?? "",
-    learns: x.learns.map((v) => loc(v, locale)).filter((v): v is string => Boolean(v)),
-    activity: loc(x.activity, locale) ?? "",
-    keepsake: loc(x.keepsake, locale) ?? "",
-    includes: x.includes.map((v) => loc(v, locale)).filter((v): v is string => Boolean(v)),
+    stops: x.stops.map((st) => ({
+      kind: st.kind,
+      title: loc(st.title, locale) ?? "",
+      description: loc(st.description, locale),
+      minutes: st.minutes,
+    })),
+    includes: x.includes,
     gallery: x.gallery.map((g) => image(g, locale, x.name)),
+    departureTime: x.departureTime,
+    meetingPoint: loc(x.meetingPoint, locale),
     seasonStart: x.seasonStart,
     seasonEnd: x.seasonEnd,
     year: ctx.editions.get(x.editionId)!.year,
-    creator: creatorRef(c, locale),
+    workshop: {
+      ...creatorRef(c, locale),
+      access: current.some((f) => f.workshop.access === "open")
+        ? "open"
+        : current.length
+          ? "private"
+          : undefined,
+    },
   };
 }
