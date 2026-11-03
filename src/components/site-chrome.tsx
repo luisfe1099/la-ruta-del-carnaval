@@ -10,7 +10,7 @@ type Section = "home" | "detail" | "list";
 
 function sectionOf(pathname: string): Section {
   if (pathname === "/") return "home";
-  if (/^\/(carrozas|creadores|experiencias)\/[^/]+$/.test(pathname)) return "detail";
+  if (/^\/(carrozas|creadores)\/[^/]+$/.test(pathname)) return "detail";
   return "list";
 }
 
@@ -111,7 +111,6 @@ export function SiteChrome() {
     { href: "/carrozas", label: t("floats") },
     { href: "/mapa", label: t("map") },
     { href: "/creadores", label: t("creators") },
-    { href: "/experiencias", label: t("experiences") },
     { href: "/dinamicas", label: t("dynamics") },
     { href: "/el-carnaval", label: t("carnival") },
     { href: "/como-participar", label: t("howTo") },
@@ -120,7 +119,6 @@ export function SiteChrome() {
 
   const sheetLinks = [
     { href: "/creadores", label: t("creators") },
-    { href: "/experiencias", label: t("experiences") },
     { href: "/dinamicas", label: t("dynamics") },
     { href: "/el-carnaval", label: t("carnival") },
     { href: "/como-participar", label: t("howTo") },
