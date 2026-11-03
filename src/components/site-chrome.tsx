@@ -111,7 +111,6 @@ export function SiteChrome() {
     { href: "/carrozas", label: t("floats") },
     { href: "/mapa", label: t("map") },
     { href: "/creadores", label: t("creators") },
-    { href: "/dinamicas", label: t("dynamics") },
     { href: "/el-carnaval", label: t("carnival") },
     { href: "/como-participar", label: t("howTo") },
     { href: "/contacto", label: t("contact") },
@@ -119,7 +118,6 @@ export function SiteChrome() {
 
   const sheetLinks = [
     { href: "/creadores", label: t("creators") },
-    { href: "/dinamicas", label: t("dynamics") },
     { href: "/el-carnaval", label: t("carnival") },
     { href: "/como-participar", label: t("howTo") },
     { href: "/contacto", label: t("contact") },
@@ -129,7 +127,6 @@ export function SiteChrome() {
     { href: "/carrozas", label: t("floats"), icon: Icons.floats },
     { href: "/mapa", label: t("map"), icon: Icons.map },
     { href: "/creadores", label: t("creators"), icon: Icons.creators },
-    { href: "/dinamicas", label: t("dynamics"), icon: Icons.dynamics },
   ];
 
   const tabClass = (active: boolean) =>
@@ -203,7 +200,7 @@ export function SiteChrome() {
         className="fixed inset-x-3 bottom-[calc(var(--tabbar-gap)+env(safe-area-inset-bottom))] z-50 rounded-2xl bg-cafe text-kraft shadow-[0_8px_28px_rgba(43,29,20,0.35)] md:hidden"
       >
         <ul
-          className="grid h-[var(--tabbar-h)] grid-cols-5 items-center gap-0.5 px-1"
+          className="grid h-[var(--tabbar-h)] grid-cols-4 items-center gap-0.5 px-1"
         >
           {tabs.map((tab) => (
             <li key={tab.href} className="h-full">
